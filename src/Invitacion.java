@@ -12,4 +12,36 @@ public class Invitacion {
 
 	}
 
+	public String getDe_usuario() {
+		return de_usuario;
+	}
+
+	public void setDe_usuario(String de_usuario) {
+		this.de_usuario = de_usuario;
+	}
+
+	public String getPara_usuario() {
+		return para_usuario;
+	}
+
+	public void setPara_usuario(String para_usuario) {
+		this.para_usuario = para_usuario;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public Date getFecha_expiracion() {
+		return fecha_expiracion;
+	}
+
+	public void setFecha_expiracion(Date fecha_expiracion) {
+		this.fecha_expiracion = fecha_expiracion;
+	}
+	
 }
