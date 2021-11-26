@@ -3,9 +3,13 @@ import java.util.List;
 
 public class Administrador extends Usuario implements servicio_usuario, servicio_organizacion, servicio_pago, servicio_promocion {
 
-	public boolean autoriza_pago(int id) {
-		boolean resultado = false;
-		return resultado;
+	public boolean autorizar_pago(Remuneracion pago) {
+		boolean booleano = true;
+		if (!pago.Remu_valida) {
+			pago.setRemu_valida(true);
+			booleano = true;
+		}
+		return booleano;
 	}
 	
 	public static void main(String[] args) {

@@ -1,13 +1,16 @@
 import java.util.List;
+import java.util.Date;
 
 public class Usuario implements servicio_pago{
 	
 	public int id;
+	public String correo;
 	public String nombre;
 	private String contraseña;
 	private double capital;
 	public String rol;
 	public int miembro_organizacion;
+	public Date membresia_expira = new Date();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

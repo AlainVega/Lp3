@@ -11,7 +11,16 @@ public class Invitacion {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	public boolean expiro() {
+		java.util.Date hoy = new java.util.Date(); // saco la fecha de hoy
+		if ( hoy.after(fecha_expiracion)  ||  hoy.before(fecha_creacion)) { // si no estoy en el rango de vida de la invitacion
+			return true;
+		} else {
+			return false;
+		}
+	}
+//	/etc/init.d/ 
 	public String getDe_usuario() {
 		return de_usuario;
 	}
