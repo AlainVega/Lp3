@@ -16,5 +16,5 @@ public class HelloController {
 	public String get_user_by_id(@PathVariable String id) {
 		return "This is user with ID " + id;
 	}
-
+	
 }
