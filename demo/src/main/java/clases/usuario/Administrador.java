@@ -6,8 +6,8 @@ public class Administrador extends Usuario {
 
 	public boolean autorizar_pago(Remuneracion pago) {
 		boolean booleano = true;
-		if (!pago.Remu_valida) {
-			pago.setRemu_valida(true);
+		if (!pago.RemuValida) {
+			pago.setRemuValida(true);
 			booleano = true;
 		}
 		

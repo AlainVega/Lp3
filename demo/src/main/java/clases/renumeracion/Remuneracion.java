@@ -3,19 +3,15 @@ package clases.renumeracion;
 public class Remuneracion {	
 	
 	public int id;
-	public String tipo_moneda;
+	public String tipoMoneda;
 	public double monto;
-	public String tipo_remuneracion;
-	public boolean exenta_grabada;
-	public boolean Remu_valida;
-	public int tipo_impuesto;
-	public int de_usuario;
-	public int para_usuario;
+	public String tipoRemuneracion;
+	public boolean exentaGrabada;
+	public boolean RemuValida;
+	public int tipoImpuesto;
+	public int deUsuario;
+	public int paraUsuario;
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public int getId() {
 		return id;
@@ -25,12 +21,12 @@ public class Remuneracion {
 		this.id = id;
 	}
 
-	public String getTipo_moneda() {
-		return tipo_moneda;
+	public String getTipoMoneda() {
+		return tipoMoneda;
 	}
 
-	public void setTipo_moneda(String tipo_moneda) {
-		this.tipo_moneda = tipo_moneda;
+	public void setTipoMoneda(String tipoMoneda) {
+		this.tipoMoneda = tipoMoneda;
 	}
 
 	public double getMonto() {
@@ -41,36 +37,36 @@ public class Remuneracion {
 		this.monto = monto;
 	}
 
-	public String getTipo_remuneracion() {
-		return tipo_remuneracion;
+	public String getTipoRemuneracion() {
+		return tipoRemuneracion;
 	}
 
-	public void setTipo_remuneracion(String tipo_remuneracion) {
-		this.tipo_remuneracion = tipo_remuneracion;
+	public void setTipoRemuneracion(String tipoRemuneracion) {
+		this.tipoRemuneracion = tipoRemuneracion;
 	}
 
-	public boolean isExenta_grabada() {
-		return exenta_grabada;
+	public boolean isExentaGrabada() {
+		return exentaGrabada;
 	}
 
-	public void setExenta_grabada(boolean exenta_grabada) {
-		this.exenta_grabada = exenta_grabada;
+	public void setExenta_grabada(boolean exentaGrabada) {
+		this.exentaGrabada = exentaGrabada;
 	}
 
-	public boolean isRemu_valida() {
-		return Remu_valida;
+	public boolean isRemuValida() {
+		return RemuValida;
 	}
 
-	public void setRemu_valida(boolean remu_valida) {
-		Remu_valida = remu_valida;
+	public void setRemuValida(boolean RemuValida) {
+		this.RemuValida = RemuValida;
 	}
 
-	public int getTipo_impuesto() {
-		return tipo_impuesto;
+	public int getTipoImpuesto() {
+		return tipoImpuesto;
 	}
 
-	public void setTipo_impuesto(int tipo_impuesto) {
-		this.tipo_impuesto = tipo_impuesto;
+	public void setTipoImpuesto(int tipoImpuesto) {
+		this.tipoImpuesto = tipoImpuesto;
 	}
 
 	

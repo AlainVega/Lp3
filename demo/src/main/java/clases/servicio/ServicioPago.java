@@ -5,10 +5,10 @@ import clases.renumeracion.Remuneracion;
 
 public interface ServicioPago {
 
-	public Remuneracion crear_pago(Remuneracion nuevo_pago);
-	public void eliminar_pago(int id);
-	public Remuneracion modificar_pago(Remuneracion pago_act);
-	public List<String> buscar_pago(int id);
-	public List<String> buscar_pago(String tipo);
+	public Remuneracion CrearPago(Remuneracion nuevoPago);
+	public void EliminarPago(int id);
+	public Remuneracion ModificarPago(Remuneracion pagoAct);
+	public List<String> BuscarPago(int id);
+	public List<String> BuscarPago(String tipo);
 	
 }

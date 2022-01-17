@@ -2,15 +2,15 @@ package clases.usuario;
 
 public class Sponsor extends Usuario {
 
-	public String financiar_cat;
+	public String financiarCat;
 	private double cantidad;
 
-	public String getFinanciar_cat() {
-		return financiar_cat;
+	public String getFinanciarCat() {
+		return financiarCat;
 	}
 
-	public void setFinanciar_cat(String financiar_cat) {
-		this.financiar_cat = financiar_cat;
+	public void setFinanciarCat(String financiarCat) {
+		this.financiarCat = financiarCat;
 	}
 
 	public double getCantidad() {

@@ -1,7 +1,4 @@
-package clases.organizacion;
 import java.util.ArrayList;
-
-import clases.usuario.Usuario;
 
 public class Organizacion {
 	
@@ -11,13 +8,17 @@ public class Organizacion {
 	public ArrayList<Integer> lista_usuarios = new ArrayList<Integer>();
 	
 	public void NotificarMiembro(Usuario user) {
-		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.contains(user.id)) { // verifico si el usuario esta en mi lista de usuarios
-				System.out.print("El usuario que posee esta direccion mail: " + user.correo + "/nSe le notifica que su membresia ya expiro");
+		for(int i = 0; i < lista_usuarios.size(); i++) {
+			if ( lista_usuarios.contains(user.id) ) { // verifico si el usuario esta en mi lista de usuarios
+				System.out.print("El usuario que posee esta direccion mail: "+user.correo+"/nSe le notifica que su membresia ya expiro");
 			}
 		}
 	}
 	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	public int getId() {
 		return id;

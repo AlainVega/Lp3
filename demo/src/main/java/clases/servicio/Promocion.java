@@ -2,13 +2,13 @@ package clases.servicio;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Promocion implements ServicioPromocion {
+public class Promocion {
 	
 	public int id;
 	public String producto;
-	public int id_org;
-	public Date fecha_emision = new Date();
-	public Date fecha_fin = new Date();
+	public int idOrg;
+	public Date fechaEmision = new Date();
+	public Date fechaFin = new Date();
 	
 	public int getId() {
 		return id;
@@ -23,47 +23,22 @@ public class Promocion implements ServicioPromocion {
 		this.producto = producto;
 	}
 	public int getId_org() {
-		return id_org;
+		return idOrg;
 	}
-	public void setId_org(int id_org) {
-		this.id_org = id_org;
+	public void setId_org(int idOrg) {
+		this.idOrg = idOrg;
 	}
 	public Date getFecha_emision() {
-		return fecha_emision;
+		return fechaEmision;
 	}
-	public void setFecha_emision(Date fecha_emision) {
-		this.fecha_emision = fecha_emision;
+	public void setFecha_emision(Date fechaEmision) {
+		this.fechaEmision = fechaEmision;
 	}
 	public Date getFecha_fin() {
-		return fecha_fin;
+		return fechaFin;
 	}
-	public void setFecha_fin(Date fecha_fin) {
-		this.fecha_fin = fecha_fin;
-	}
-	@Override
-	public Promocion crear_promocion(Promocion promo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void eliminar_promocion(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public Promocion modificar_promocion(Promocion promo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<Integer> buscar_promocion(String producto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<Integer> buscar_promocion(int id_org) {
-		// TODO Auto-generated method stub
-		return null;
+	public void setFecha_fin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	
 }

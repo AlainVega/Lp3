@@ -2,15 +2,15 @@ package clases.usuario;
 
 public class AngelInvestor extends Usuario {
 	
-	public int financiar_org;
+	public int financiarOrg;
 	public double cantidad;
 
 	public int getFinanciar_org() {
-		return financiar_org;
+		return financiarOrg;
 	}
 
-	public void setFinanciar_org(int financiar_org) {
-		this.financiar_org = financiar_org;
+	public void setFinanciar_org(int financiarOrg) {
+		this.financiarOrg = financiarOrg;
 	}
 
 	public double getCantidad() {
