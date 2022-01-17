@@ -16,10 +16,10 @@ public class Usuario {
 	public String correo;
 	private String contrasena;
 	private double capital;
-	public String rol;
+	protected String rol;
 	public int organizacionId;
 	public Date membresiaFechaExpiracion = new Date();
-	
+
 	public long getId() {
 		return id;
 	}
@@ -60,11 +60,11 @@ public class Usuario {
 		this.rol = rol;
 	}
 
-	public int getMiembro_organizacion() {
+	public int getorganizacionId() {
 		return organizacionId;
 	}
 
-	public void setMiembro_organizacion(int organizacionId) {
+	public void setOrganizacionId(int organizacionId) {
 		this.organizacionId = organizacionId;
 	}
 }

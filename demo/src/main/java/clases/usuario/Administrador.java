@@ -1,7 +1,10 @@
 package clases.usuario;
 
+import javax.persistence.Entity;
+
 import clases.renumeracion.Remuneracion;
 
+@Entity
 public class Administrador extends Usuario {
 
 	public boolean autorizar_pago(Remuneracion pago) {

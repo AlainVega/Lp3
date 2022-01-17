@@ -1,10 +1,18 @@
 package clases.usuario;
 
-public class Sponsor extends Usuario {
+import javax.persistence.Entity;
 
+@Entity
+public class Sponsor extends Usuario {
+	
 	public String financiarCat;
 	private double cantidad;
-
+	
+	public Sponsor() {
+		super();
+		this.rol = "SP";
+	}
+	
 	public String getFinanciarCat() {
 		return financiarCat;
 	}
