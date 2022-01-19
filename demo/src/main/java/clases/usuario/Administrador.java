@@ -2,11 +2,11 @@ package clases.usuario;
 
 import javax.persistence.Entity;
 
-import clases.renumeracion.Remuneracion;
+import clases.remuneracion.Remuneracion;
 
 @Entity
 public class Administrador extends Usuario {
-
+	/*
 	public boolean autorizar_pago(Remuneracion pago) {
 		boolean booleano = true;
 		if (!pago.RemuValida) {
@@ -15,5 +15,5 @@ public class Administrador extends Usuario {
 		}
 		
 		return booleano;
-	}
+	}*/
 }

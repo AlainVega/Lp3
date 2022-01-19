@@ -1,39 +1,33 @@
 package clases.servicio;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import clases.renumeracion.Remuneracion;
+import clases.remuneracion.Remuneracion;
+import clases.repositorios.RemuneracionRepositorio;
 
 public class ServicioPagoImplementacion implements ServicioPago {
-
+	
+	@Autowired
+	private RemuneracionRepositorio remuRepo;
+	
 	@Override
-	public Remuneracion CrearPago(Remuneracion nuevoPago) {
-		// TODO Auto-generated method stub
-		return null;
+	public Remuneracion crearRemuneracion(Remuneracion nuevaRemuneracion) {
+		return remuRepo.save(nuevaRemuneracion);
 	}
 
 	@Override
-	public void EliminarPago(int id) {
-		// TODO Auto-generated method stub
-		
+	public void eliminarRemuneracion(long id) {
+		remuRepo.deleteById(id);
 	}
 
 	@Override
-	public Remuneracion ModificarPago(Remuneracion pagoAct) {
-		// TODO Auto-generated method stub
-		return null;
+	public Remuneracion modificarRemuneracion(Remuneracion remuneracionAct) {
+		return remuRepo.save(remuneracionAct);
 	}
 
 	@Override
-	public List<String> BuscarPago(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Remuneracion buscarRemuneracion(long id) {
+		return remuRepo.findById(id);
 	}
-
-	@Override
-	public List<String> BuscarPago(String tipo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
