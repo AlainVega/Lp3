@@ -5,10 +5,9 @@ import clases.organizacion.Organizacion;
 
 public interface ServicioOrganizacion {
 
-	public Organizacion CrearOrg(Organizacion nueva_organizacion);
-	public void EliminarOrg(int id);
-	public Organizacion ModificarOrg(Organizacion organizacionAct);
-	public ArrayList<Integer> BuscarOrg(int id);
-	public ArrayList<Integer> BuscarOrg(String tipo);
+	public Organizacion crearOrg(Organizacion nuevaOrganizacion);
+	public void eliminarOrg(long id);
+	public Organizacion modificarOrg(Organizacion organizacionAct);
+	public ArrayList<Organizacion> listarPorTipo(String tipo);
 	
 }

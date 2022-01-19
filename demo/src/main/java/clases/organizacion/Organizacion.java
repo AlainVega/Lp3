@@ -1,11 +1,20 @@
 package clases.organizacion;
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import clases.usuario.Usuario;
 
+@Entity
 public class Organizacion {
 	
-	public int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long id;
+	
 	public String tipo;
 	public String nombre;
 	public ArrayList<Integer> lista_usuarios = new ArrayList<Integer>();
@@ -19,11 +28,11 @@ public class Organizacion {
 	}
 	
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

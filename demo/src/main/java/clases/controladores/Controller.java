@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import clases.organizacion.Organizacion;
+import clases.servicio.ServicioOrganizacion;
 import clases.servicio.ServicioUsuario;
 import clases.usuario.AngelInvestor;
 import clases.usuario.Brainstormer;
@@ -20,6 +22,8 @@ import clases.usuario.Usuario;
 
 @RestController
 public class Controller {
+	
+	//Users
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
@@ -83,4 +87,28 @@ public class Controller {
 	public void eliminarUsuario(@PathVariable long id) {
 		servicioUsuario.eliminarUsuario(id);
 	}
+	
+	//Organizations
+	
+	@Autowired
+	private ServicioOrganizacion servicioOrganizacion;
+	
+	@PutMapping(
+			value = "/crearOrganizacion",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Organizacion crearOrganizacion(@RequestBody Organizacion organizacion) {
+		return servicioOrganizacion.crearOrg(organizacion);
+	}
+	
+	@DeleteMapping("/eliminarOrganizacion/{id}")
+	public void eliminarOrganizacion(@PathVariable long id) {
+		servicioOrganizacion.eliminarOrg(id);
+	}
+	
+	@GetMapping("/listarOrganizaciones/{tipo}")
+	public ArrayList<Organizacion> listarOrganizaciones(@PathVariable String tipo) {
+		return servicioOrganizacion.listarPorTipo(tipo);
+	}
+	//Falta el modificarPrganizacion aca
 }
