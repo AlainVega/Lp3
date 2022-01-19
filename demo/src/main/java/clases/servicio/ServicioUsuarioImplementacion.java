@@ -54,7 +54,6 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 	public void eliminarUsuario(long id) {
 		usuarioRepo.deleteById(id);
 	}
-
 	
 	// TODO: Arreglar para que sea mas generico, crashea si se le manda una subclase de Usuario.
 	@Override

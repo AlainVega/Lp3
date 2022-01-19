@@ -33,7 +33,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = "/crearUsuario/angelInvestor",
+			value = {"/crearUsuario/angelInvestor", "/actualizarUsuario/angelInvestor"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearAngelInvestor(@RequestBody AngelInvestor angelInvestor) {
@@ -41,7 +41,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = "/crearUsuario/brainstormer",
+			value = {"/crearUsuario/brainstormer", "/actualizarUsuario/brainstormer"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearBrainstormer(@RequestBody Brainstormer brainstormer) {
@@ -50,7 +50,7 @@ public class Controller {
 	
 	
 	@PutMapping(
-			value = "/crearUsuario/implementador",
+			value = {"/crearUsuario/implementador", "/actualizarUsuario/implementador"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearImplementador(@RequestBody Implementador implementador) {
@@ -58,7 +58,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = "/crearUsuario/sponsor",
+			value = {"/crearUsuario/sponsor", "/actualizarUsuario/sponsor"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearSponsor(@RequestBody Sponsor sponsor) {
