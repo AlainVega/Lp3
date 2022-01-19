@@ -6,22 +6,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import clases.usuario.Usuario;
+import org.hibernate.annotations.Table;
 
+import clases.usuario.Usuario;
 @Entity
+//@Table(name = "Organizaciones")
 public class Organizacion {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
 	
 	public String tipo;
 	public String nombre;
-	public ArrayList<Integer> lista_usuarios = new ArrayList<Integer>();
+	public ArrayList<Integer> listaUsuarios = new ArrayList<Integer>();
 	
 	public void NotificarMiembro(Usuario user) {
-		for (int i = 0; i < lista_usuarios.size(); i++) {
-			if (lista_usuarios.contains(user.id)) { // verifico si el usuario esta en mi lista de usuarios
+		for (int i = 0; i < listaUsuarios.size(); i++) {
+			if (listaUsuarios.contains(user.id)) { // verifico si el usuario esta en mi lista de usuarios
 				System.out.print("El usuario que posee esta direccion mail: " + user.correo + "/nSe le notifica que su membresia ya expiro");
 			}
 		}
@@ -52,12 +54,12 @@ public class Organizacion {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Integer> getLista_usuarios() {
-		return lista_usuarios;
+	public ArrayList<Integer> getListaUsuarios() {
+		return listaUsuarios;
 	}
 
-	public void setLista_usuarios(ArrayList<Integer> lista_usuarios) {
-		this.lista_usuarios = lista_usuarios;
+	public void setListaUsuarios(ArrayList<Integer> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 	
 

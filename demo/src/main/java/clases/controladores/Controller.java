@@ -94,7 +94,7 @@ public class Controller {
 	private ServicioOrganizacion servicioOrganizacion;
 	
 	@PutMapping(
-			value = "/crearOrganizacion",
+			value = {"/crearOrganizacion", "/actualizarOrganizacion"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Organizacion crearOrganizacion(@RequestBody Organizacion organizacion) {
