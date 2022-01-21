@@ -13,7 +13,7 @@ import clases.repositorios.UsuarioRepositorio;
 import clases.usuario.Usuario;
 
 @SpringBootApplication
-@EntityScan({"clases.usuario", "clases.organizacion", "clases.remuneracion"})
+@EntityScan({"clases.usuario", "clases.organizacion", "clases.remuneracion", "clases.servicio"})
 @ComponentScan({"clases.servicio", "clases.controladores"})
 @EnableJpaRepositories("clases.repositorios")
 public class Lp3TpfApplication {

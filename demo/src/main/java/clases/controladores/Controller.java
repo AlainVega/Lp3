@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import clases.organizacion.Organizacion;
+import clases.servicio.Promocion;
 import clases.servicio.ServicioOrganizacion;
+import clases.servicio.ServicioPromocion;
 import clases.servicio.ServicioUsuario;
 import clases.usuario.AngelInvestor;
 import clases.usuario.Brainstormer;
@@ -110,5 +112,29 @@ public class Controller {
 	public ArrayList<Organizacion> listarOrganizaciones(@PathVariable String tipo) {
 		return servicioOrganizacion.listarPorTipo(tipo);
 	}
-	//Falta el modificarPrganizacion aca
+	
+	// Promotions
+	
+	@Autowired
+	private ServicioPromocion servicioPromocion;
+	
+	@PutMapping(
+			value = {"/crearPromocion", "/actualizarPromocion"},
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Promocion crearPromocion(@RequestBody Promocion promocion) {
+		return servicioPromocion.crearPromocion(promocion);
+	}
+	
+	@DeleteMapping("/eliminarPromocion/{id}")
+	public void eliminarPromocion(@PathVariable long id) {
+		servicioPromocion.eliminarPromocion(id);
+	}
+	
+	@GetMapping("/listarPromociones/{producto}")
+	public ArrayList<Promocion> listarPromociones(@PathVariable String producto) {
+		return servicioPromocion.buscarPromocion(producto);
+	}
+	
+	// Pagos
 }

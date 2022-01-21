@@ -1,19 +1,33 @@
 package clases.servicio;
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
+//import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
 public class Promocion {
 	
-	public int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public long id;
+	
 	public String producto;
 	public int idOrg;
-	public Date fechaEmision = new Date();
-	public Date fechaFin = new Date();
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy" ,timezone = "UTC-3") 
+	public LocalDate fechaEmision;
 	
-	public int getId() {
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy" ,timezone = "UTC-3")
+	public LocalDate fechaFin;
+	
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getProducto() {
@@ -22,22 +36,22 @@ public class Promocion {
 	public void setProducto(String producto) {
 		this.producto = producto;
 	}
-	public int getId_org() {
+	public int getIdOrg() {
 		return idOrg;
 	}
-	public void setId_org(int idOrg) {
+	public void setIdOrg(int idOrg) {
 		this.idOrg = idOrg;
 	}
-	public Date getFecha_emision() {
+	public LocalDate getFechaEmision() {
 		return fechaEmision;
 	}
-	public void setFecha_emision(Date fechaEmision) {
+	public void setFechaEmision(LocalDate fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
-	public Date getFecha_fin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
-	public void setFecha_fin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	

@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public interface ServicioPromocion {
 
-	public Promocion CrearPromocion(Promocion promo);
-	public void EliminarPromocion(int id);
-	public Promocion ModificarPromocion(Promocion promo);
-	public ArrayList<Integer> BuscarPromocion(String producto);
-	public ArrayList<Integer> BuscarPromocion(int idOrg);
+	public Promocion crearPromocion(Promocion promo);
+	public void eliminarPromocion(long id);
+	public Promocion modificarPromocion(Promocion promo);
+	public ArrayList<Promocion> buscarPromocion(String producto);
+	public Promocion buscarPromocion(int id);
 	
 }
