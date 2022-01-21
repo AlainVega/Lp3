@@ -1,9 +1,11 @@
 package clases.usuario;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Usuario {
@@ -17,8 +19,11 @@ public class Usuario {
 	private String contrasena;
 	private double capital;
 	protected String rol;
-	public int organizacionId;
-	public Date membresiaFechaExpiracion = new Date();
+	public long organizacionId;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	public LocalDate membresiaFechaInicio;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	public LocalDate membresiaFechaExpiracion;
 
 	public long getId() {
 		return id;
@@ -60,11 +65,35 @@ public class Usuario {
 		this.rol = rol;
 	}
 
-	public int getorganizacionId() {
+	public long getOrganizacionId() {
 		return organizacionId;
 	}
-
-	public void setOrganizacionId(int organizacionId) {
+	
+	public void setOrganizacionId(long organizacionId) {
 		this.organizacionId = organizacionId;
+	}
+	
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public LocalDate getMembresiaFechaInicio() {
+		return membresiaFechaInicio;
+	}
+
+	public void setMembresiaFechaInicio(LocalDate membresiaFechaInicio) {
+		this.membresiaFechaInicio = membresiaFechaInicio;
+	}
+
+	public LocalDate getMembresiaFechaExpiracion() {
+		return membresiaFechaExpiracion;
+	}
+
+	public void setMembresiaFechaExpiracion(LocalDate membresiaFechaExpiracion) {
+		this.membresiaFechaExpiracion = membresiaFechaExpiracion;
 	}
 }

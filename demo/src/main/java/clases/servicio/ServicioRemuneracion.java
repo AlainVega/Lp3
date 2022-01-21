@@ -3,7 +3,7 @@ import java.util.List;
 
 import clases.remuneracion.Remuneracion;
 
-public interface ServicioPago {
+public interface ServicioRemuneracion {
 
 	public Remuneracion crearRemuneracion(Remuneracion nuevaRemuneracion);
 	public void eliminarRemuneracion(long id);

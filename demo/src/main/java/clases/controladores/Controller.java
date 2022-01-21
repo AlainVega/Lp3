@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import clases.invitacion.Invitacion;
 import clases.organizacion.Organizacion;
 import clases.servicio.Promocion;
+import clases.servicio.ServicioInvitacion;
 import clases.servicio.ServicioOrganizacion;
 import clases.servicio.ServicioPromocion;
 import clases.servicio.ServicioUsuario;
@@ -90,6 +92,8 @@ public class Controller {
 		servicioUsuario.eliminarUsuario(id);
 	}
 	
+	
+	
 	//Organizations
 	
 	@Autowired
@@ -137,4 +141,32 @@ public class Controller {
 	}
 	
 	// Pagos
+	
+	// Invitaciones:
+	@Autowired
+	private ServicioInvitacion servicioInvitacion;
+	
+	@PutMapping(
+			value = "/crearInvitacion",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Invitacion crearInvitacion(@RequestBody Invitacion invitacion) {
+		return servicioInvitacion.crearInv(invitacion);
+	}
+	
+	@DeleteMapping("/eliminarInvitacion/{id}")
+	public void eliminarInvitacion(@PathVariable long id) {
+		servicioInvitacion.eliminarInv(id);
+	}
+	
+	@GetMapping("/aceptarInvitacion/{id}")
+	public void aceptarInvitacion(@PathVariable long id) {
+		servicioInvitacion.aceptarInvitacion(id);
+	}
+	
+	@GetMapping("/checkearExpiracionInvitaciones")
+	public String checkearExpiracionInvitaciones() {
+		Integer cantidadExpiradas = servicioInvitacion.checkearExpiracionTodas();
+		return String.format("Hay %d invitaciones expiradas.", cantidadExpiradas);
+	}
 }

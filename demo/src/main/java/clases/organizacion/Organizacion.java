@@ -21,15 +21,6 @@ public class Organizacion {
 	public String nombre;
 	public ArrayList<Integer> listaUsuarios = new ArrayList<Integer>();
 	
-	public void NotificarMiembro(Usuario user) {
-		for (int i = 0; i < listaUsuarios.size(); i++) {
-			if (listaUsuarios.contains(user.id)) { // verifico si el usuario esta en mi lista de usuarios
-				System.out.print("El usuario que posee esta direccion mail: " + user.correo + "/nSe le notifica que su membresia ya expiro");
-			}
-		}
-	}
-	
-
 	public long getId() {
 		return id;
 	}

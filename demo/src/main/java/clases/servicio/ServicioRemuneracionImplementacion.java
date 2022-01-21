@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import clases.remuneracion.Remuneracion;
 import clases.repositorios.RemuneracionRepositorio;
 
-public class ServicioPagoImplementacion implements ServicioPago {
+public class ServicioRemuneracionImplementacion implements ServicioRemuneracion {
 	
 	@Autowired
 	private RemuneracionRepositorio remuRepo;
