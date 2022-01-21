@@ -13,15 +13,13 @@ import clases.repositorios.UsuarioRepositorio;
 import clases.usuario.Usuario;
 
 @SpringBootApplication
-@EntityScan({"clases.usuario", "clases.organizacion", "clases.remuneracion"})
+@EntityScan({"clases.usuario", "clases.organizacion", "clases.remuneracion", "clases.invitacion"})
 @ComponentScan({"clases.servicio", "clases.controladores"})
 @EnableJpaRepositories("clases.repositorios")
 public class Lp3TpfApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Lp3TpfApplication.class, args);
-		Usuario user_test = new Usuario();
-		user_test.nombre = "Mathias Martinez";
 	}
 }
 

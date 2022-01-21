@@ -1,53 +1,78 @@
 package clases.invitacion;
-import java.util.Date;
+import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
 public class Invitacion {
 	
-	public String deUsuario;
-	public String paraUsuario;
-	public Date fechaCreacion = new Date();
-	public Date fechaExpiracion = new Date();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long id;
 	
+	public Long idDeUsuario;
+	public Long idParaUsuario;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	public LocalDate fechaCreacion = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	public LocalDate fechaExpiracion = LocalDate.now().plusDays(30);
+	boolean expirado;
+
+	public Invitacion() {
+		
+	}
 	
-	public boolean expiro() {
-		java.util.Date hoy = new java.util.Date(); // saco la fecha de hoy
-		if ( hoy.after(fechaExpiracion)  ||  hoy.before(fechaCreacion)) { // si no estoy en el rango de vida de la invitacion
-			return true;
-		} else {
-			return false;
-		}
+	public Long getId() {
+		return id;
 	}
-//	/etc/init.d/ 
-	public String getDeUsuario() {
-		return deUsuario;
+	
+	public void setId(long id) {
+		this.id = id;
 	}
-
-	public void setDeUsuario(String deUsuario) {
-		this.deUsuario = deUsuario;
-	}
-
-	public String getParaUsuario() {
-		return paraUsuario;
-	}
-
-	public void setParaUsuario(String paraUsuario) {
-		this.paraUsuario = paraUsuario;
-	}
-
-	public Date getFechaCreacion() {
+	
+	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
+	public void setFechaCreacion(LocalDate fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Date getFechaExpiracion() {
+	public LocalDate getFechaExpiracion() {
 		return fechaExpiracion;
 	}
 
-	public void setFechaExpiracion(Date fechaExpiracion) {
+	public void setFechaExpiracion(LocalDate fechaExpiracion) {
 		this.fechaExpiracion = fechaExpiracion;
+	}
+
+	public Long getIdDeUsuario() {
+		return idDeUsuario;
+	}
+
+	public void setIdDeUsuario(Long idDeUsuario) {
+		this.idDeUsuario = idDeUsuario;
+	}
+
+	public Long getIdParaUsuario() {
+		return idParaUsuario;
+	}
+
+	public void setIdParaUsuario(Long idParaUsuario) {
+		this.idParaUsuario = idParaUsuario;
+	}
+
+	public boolean isExpirado() {
+		return expirado;
+	}
+
+	public void setExpirado(boolean expirado) {
+		this.expirado = expirado;
 	}
 	
 }
