@@ -1,12 +1,14 @@
 package clases.controladores;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +27,7 @@ import clases.usuario.Usuario;
 @RestController
 public class Controller {
 	
-	//Users
+	//Usuarios
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
@@ -90,15 +92,13 @@ public class Controller {
 		servicioUsuario.eliminarUsuario(id);
 	}
 	
-	
-	
-	//Organizations
+	//Organizaciones
 	
 	@Autowired
 	private ServicioOrganizacion servicioOrganizacion;
 	
 	@PutMapping(
-			value = "/crearOrganizacion",
+			value = {"/crearOrganizacion", "/actualizarOrganizacion"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Organizacion crearOrganizacion(@RequestBody Organizacion organizacion) {
@@ -114,9 +114,14 @@ public class Controller {
 	public ArrayList<Organizacion> listarOrganizaciones(@PathVariable String tipo) {
 		return servicioOrganizacion.listarPorTipo(tipo);
 	}
-	//Falta el modificarPrganizacion aca
 	
-	// Invitaciones:
+	@PostMapping("/agregarMiembro")
+	public Organizacion agregarMiembro(@RequestBody Map<String, String> json) {
+		return servicioOrganizacion.agregarMiembro(Long.parseLong(json.get("idOrg")), Long.parseLong(json.get("idUsuario")));
+	}
+	
+	// Invitaciones
+	
 	@Autowired
 	private ServicioInvitacion servicioInvitacion;
 	

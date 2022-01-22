@@ -17,7 +17,7 @@ public class Organizacion {
 	
 	public String tipo;
 	public String nombre;
-	public ArrayList<Integer> listaUsuarios = new ArrayList<Integer>();
+	public ArrayList<Long> listaUsuarios = new ArrayList<Long>();
 	
 	public long getId() {
 		return id;
@@ -43,11 +43,11 @@ public class Organizacion {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Integer> getListaUsuarios() {
+	public ArrayList<Long> getListaUsuarios() {
 		return listaUsuarios;
 	}
 
-	public void setListaUsuarios(ArrayList<Integer> listaUsuarios) {
+	public void setListaUsuarios(ArrayList<Long> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;
 	}
 	
