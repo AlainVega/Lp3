@@ -6,9 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import clases.usuario.Usuario;
+import org.hibernate.annotations.Table;
 
+import clases.usuario.Usuario;
 @Entity
+//@Table(name = "Organizaciones")
 public class Organizacion {
 	
 	@Id
