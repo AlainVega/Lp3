@@ -13,4 +13,5 @@ import clases.usuario.Usuario;
 public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
 	Usuario findById(long id);
 	ArrayList<Usuario> findByRol(String rol);
+	boolean existsById(long id);
 }
