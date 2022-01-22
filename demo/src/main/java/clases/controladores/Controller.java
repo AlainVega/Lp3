@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import clases.invitacion.Invitacion;
 import clases.organizacion.Organizacion;
+import clases.remuneracion.Remuneracion;
+import clases.remuneracion.RemuneracionImpuesto;
 import clases.servicio.Promocion;
 import clases.servicio.ServicioInvitacion;
 import clases.servicio.ServicioOrganizacion;
 import clases.servicio.ServicioPromocion;
+import clases.servicio.ServicioRemuneracion;
 import clases.servicio.ServicioUsuario;
 import clases.usuario.AngelInvestor;
 import clases.usuario.Brainstormer;
@@ -27,7 +30,7 @@ import clases.usuario.Usuario;
 @RestController
 public class Controller {
 	
-	//Users
+	//Usuarios
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
@@ -93,8 +96,7 @@ public class Controller {
 	}
 	
 	
-	
-	//Organizations
+	//Organizaciones
 	
 	@Autowired
 	private ServicioOrganizacion servicioOrganizacion;
@@ -117,7 +119,7 @@ public class Controller {
 		return servicioOrganizacion.listarPorTipo(tipo);
 	}
 	
-	// Promotions
+	// Promociones
 	
 	@Autowired
 	private ServicioPromocion servicioPromocion;
@@ -142,7 +144,32 @@ public class Controller {
 	
 	// Pagos
 	
+	@Autowired
+	private ServicioRemuneracion servicioRemuneracion;
+	
+	@PutMapping(
+			value = {"/crearRemuneracion", "/actualizarRemuneracion"},
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Remuneracion crearRemuneracion(@RequestBody Remuneracion remu) {
+		return servicioRemuneracion.crearRemuneracion(remu);
+	}
+	
+	@PutMapping(
+			value = {"/crearRemuneracionImpuesto", "/actualizarRemuneracionImpuesto"},
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public RemuneracionImpuesto crearRemuneracionImpuesto(@RequestBody RemuneracionImpuesto remuImpuesto) {
+		return servicioRemuneracion.crearRemuneracionImpuesto(remuImpuesto);
+	}
+	
+	@DeleteMapping("/eliminarRemuneracion/{id}")
+	public void eliminarRemuneracion(@PathVariable long id) {
+		servicioRemuneracion.eliminarRemuneracion(id);
+	}
+	
 	// Invitaciones:
+	
 	@Autowired
 	private ServicioInvitacion servicioInvitacion;
 	

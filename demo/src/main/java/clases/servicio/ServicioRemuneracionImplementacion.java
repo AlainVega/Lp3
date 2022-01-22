@@ -1,10 +1,13 @@
 package clases.servicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import clases.remuneracion.Remuneracion;
+import clases.remuneracion.RemuneracionImpuesto;
 import clases.repositorios.RemuneracionRepositorio;
 
+@Service
 public class ServicioRemuneracionImplementacion implements ServicioRemuneracion {
 	
 	@Autowired
@@ -15,6 +18,11 @@ public class ServicioRemuneracionImplementacion implements ServicioRemuneracion 
 		return remuRepo.save(nuevaRemuneracion);
 	}
 
+	@Override
+	public RemuneracionImpuesto crearRemuneracionImpuesto(RemuneracionImpuesto nuevaRemuneracionImpuesto) {
+		return remuRepo.save(nuevaRemuneracionImpuesto);
+	}
+	
 	@Override
 	public void eliminarRemuneracion(long id) {
 		remuRepo.deleteById(id);
