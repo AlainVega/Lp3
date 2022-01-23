@@ -2,6 +2,7 @@ package clases.controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -52,7 +53,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = {"/crearUsuario/angelInvestor", "/actualizarUsuario/angelInvestor"},
+			value = {"/crearUsuario/administrador", "/actualizarUsuario/administrador"},
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearAdministrador(@RequestBody Administrador administrador) {
