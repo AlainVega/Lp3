@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import clases.invitacion.Invitacion;
 import clases.organizacion.Organizacion;
+import clases.pago.Pago;
 import clases.remuneracion.Remuneracion;
 import clases.remuneracion.RemuneracionImpuesto;
 import clases.servicio.Promocion;
 import clases.servicio.ServicioInvitacion;
 import clases.servicio.ServicioOrganizacion;
+import clases.servicio.ServicioPago;
 import clases.servicio.ServicioPromocion;
 import clases.servicio.ServicioRemuneracion;
 import clases.servicio.ServicioUsuario;
@@ -148,7 +150,7 @@ public class Controller {
 		return servicioPromocion.buscarPromocion(producto);
 	}
 	
-	// Pagos
+	// Remuneraciones
 	
 	@Autowired
 	private ServicioRemuneracion servicioRemuneracion;
@@ -201,5 +203,28 @@ public class Controller {
 	public String checkearExpiracionInvitaciones() {
 		Integer cantidadExpiradas = servicioInvitacion.checkearExpiracionTodas();
 		return String.format("Hay %d invitaciones expiradas.", cantidadExpiradas);
+	}
+	
+	// Pagos
+	
+	@Autowired
+	private ServicioPago servicioPago;
+	
+	@PutMapping(
+			value = {"/crearPago", "/actualizarPago"},
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Pago crearPago(@RequestBody Pago pago) {
+		return servicioPago.crearPago(pago);
+	}
+	
+	@DeleteMapping("/eliminarPago/{id}")
+	public void eliminarPago(@PathVariable long id) {
+		servicioPago.eliminarPago(id);
+	}
+	
+	@GetMapping("/pagos/{id}")
+	public Pago obtenerPago(@PathVariable long id) {
+		return servicioPago.buscarPago(id);
 	}
 }
