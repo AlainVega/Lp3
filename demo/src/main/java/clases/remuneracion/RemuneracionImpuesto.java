@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 public class RemuneracionImpuesto extends Remuneracion {
 
 	public String tipoImpuesto;
-	public double cantidadImpuesto;
 	public double porcentajeImpuesto;
 	
 	public RemuneracionImpuesto() {
@@ -19,14 +18,6 @@ public class RemuneracionImpuesto extends Remuneracion {
 
 	public void setTipoImpuesto(String tipoImpuesto) {
 		this.tipoImpuesto = tipoImpuesto;
-	}
-
-	public double getCantidadImpuesto() {
-		return cantidadImpuesto;
-	}
-
-	public void setCantidadImpuesto(double cantidadImpuesto) {
-		this.cantidadImpuesto = cantidadImpuesto;
 	}
 
 	public double getPorcentajeImpuesto() {
