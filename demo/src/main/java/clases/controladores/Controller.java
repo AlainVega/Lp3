@@ -1,7 +1,10 @@
 package clases.controladores;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,6 +28,7 @@ import clases.servicio.ServicioPago;
 import clases.servicio.ServicioPromocion;
 import clases.servicio.ServicioRemuneracion;
 import clases.servicio.ServicioUsuario;
+import clases.usuario.Administrador;
 import clases.usuario.AngelInvestor;
 import clases.usuario.Brainstormer;
 import clases.usuario.Implementador;
@@ -45,6 +49,14 @@ public class Controller {
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearUsuario(@RequestBody Usuario usuario) {
 		return servicioUsuario.crearUsuario(usuario);
+	}
+	
+	@PutMapping(
+			value = {"/crearUsuario/angelInvestor", "/actualizarUsuario/angelInvestor"},
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Usuario CrearAdministrador(@RequestBody Administrador administrador) {
+		return servicioUsuario.crearAdministrador(administrador);
 	}
 	
 	@PutMapping(
@@ -88,9 +100,14 @@ public class Controller {
 		return servicioUsuario.modificarUsuario(usuario);
 	}
 	
-	// TODO: Agregar que si rol es NULL, se imprimen todos los usuarios
+	@GetMapping("/listarUsuarios/")
+	public ArrayList<Usuario> listarUsuarios(HttpServletResponse httpResponse) throws Exception {
+		httpResponse.sendRedirect("/usuarios");
+		return null;
+	}
+	
 	@GetMapping("/listarUsuarios/{rol}")
-	public ArrayList<Usuario> listarUsuariosPorRol(@PathVariable String rol) {
+	public ArrayList<Usuario> listarUsuariosPorRol(@PathVariable String rol, HttpServletResponse httpResponse) throws Exception {
 		return servicioUsuario.listarPorRol(rol);
 	}
 	
@@ -176,7 +193,7 @@ public class Controller {
 		servicioRemuneracion.eliminarRemuneracion(id);
 	}
 	
-	// Invitaciones:
+	// Invitaciones
 	
 	@Autowired
 	private ServicioInvitacion servicioInvitacion;
