@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import clases.repositorios.UsuarioRepositorio;
+import clases.usuario.Administrador;
 import clases.usuario.AngelInvestor;
 import clases.usuario.Brainstormer;
 import clases.usuario.Implementador;
@@ -25,6 +26,11 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 		return usuarioRepo.save(nuevoUsuario);
 	}
 
+	@Override
+	public Usuario crearAdministrador(Administrador administrador) {
+		return usuarioRepo.save(administrador);
+	}
+	
 	@Override
 	public AngelInvestor crearAngelInvestor(AngelInvestor nuevoAngelInvestor) {
 		return usuarioRepo.save(nuevoAngelInvestor);
@@ -72,4 +78,5 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 		}
 		return usuarioRepo.save(usuarioEnDb);
 	}
+
 }
