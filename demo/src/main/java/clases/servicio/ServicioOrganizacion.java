@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import clases.organizacion.Organizacion;
 
+//Interfaz de las organizaciones, para los servicios crud
 public interface ServicioOrganizacion {
 
 	public Organizacion crearOrg(Organizacion nuevaOrganizacion);

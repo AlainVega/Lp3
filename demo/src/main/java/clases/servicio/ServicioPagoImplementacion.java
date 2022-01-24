@@ -7,11 +7,14 @@ import clases.pago.Pago;
 import clases.repositorios.PagoRepositorio;
 import clases.repositorios.RemuneracionRepositorio;
 
+//Implementacion del servicio de Pagos
+
+//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioPagoImplementacion implements ServicioPago {
 
 	@Autowired
-	private PagoRepositorio pagoRepo;
+	private PagoRepositorio pagoRepo; 		//Instancia del repositorio de pagos, para la utilizacion de metodos crud
 	
 	@Autowired
 	private RemuneracionRepositorio remuRepo;

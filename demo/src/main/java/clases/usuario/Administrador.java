@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 import clases.remuneracion.Remuneracion;
 
+//Se marca como entidad a la clase, para que pueda ser visible al scaneo definido en archivo Lp3TpfApplication.java
 @Entity
 public class Administrador extends Usuario {
 	/*

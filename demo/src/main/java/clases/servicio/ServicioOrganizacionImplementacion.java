@@ -12,13 +12,16 @@ import clases.repositorios.OrganizacionRepositorio;
 import clases.repositorios.UsuarioRepositorio;
 import clases.usuario.Usuario;
 
+//Implementacion del servicio para el crud de organizaciones
+
+//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioOrganizacionImplementacion implements ServicioOrganizacion {
 	
 	@Autowired
-	private OrganizacionRepositorio orgRepo;
+	private OrganizacionRepositorio orgRepo; 	//Instancia del repositorio de organizacion, para la utlizacion de metodos crud.
 	@Autowired
-	private UsuarioRepositorio usuarioRepo;
+	private UsuarioRepositorio usuarioRepo;		//Instancia del repositorio de usuario, para su utilizacion en el metodo aagregarMiembro.
 
 	@Override
 	public Organizacion crearOrg(Organizacion nuevaOrganizacion) {
@@ -48,15 +51,15 @@ public class ServicioOrganizacionImplementacion implements ServicioOrganizacion 
 
 	@Override
 	public Organizacion agregarMiembro(Long idOrg, Long idUsuario) {
-		Optional<Organizacion> orgOpt = orgRepo.findById(idOrg);
+		Optional<Organizacion> orgOpt = orgRepo.findById(idOrg);	
 		Organizacion org = orgOpt.get();
-		if (!usuarioRepo.existsById(idUsuario)) {
+		if (!usuarioRepo.existsById(idUsuario)) {			//si el usuario no existe, entonces se imprime un mensaje en la consola
 			System.out.println("El usuario no existe.");
 		}
-		else {
+		else {												
 			Optional<Usuario> usuarioOpt = usuarioRepo.findById(idUsuario);
 			Usuario usuario = usuarioOpt.get();
-			if (Objects.equals(usuario.getRol(), "AI") && (org.listaUsuarios.size() < 2)) {
+			if (Objects.equals(usuario.getRol(), "AI") && (org.listaUsuarios.size() < 2)) {		//Si el usuario es un Angel Investor, entonces la organizacion a la cual va a formar parte para financiar, debe tener al menos 2 miembros.
 				System.out.println("El Angel Investor solo puede agregarse a organizaciones que tengan 2 miembros o mas.");
 			}
 			else {

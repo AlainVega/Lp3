@@ -1,6 +1,9 @@
 package clases.servicio;
 import java.util.ArrayList;
 
+import clases.promocion.Promocion;
+
+//Interfaz de promociones, para su respectivo crud.
 public interface ServicioPromocion {
 
 	public Promocion crearPromocion(Promocion promo);

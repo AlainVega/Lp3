@@ -7,9 +7,12 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+//Clase base para los diferentes usuarios que estaran en el sistema.
+
+//Se marca como entidad a la clase, para que pueda ser visible al scaneo definido en archivo Lp3TpfApplication.java
 @Entity
 public class Usuario {
-	
+	//Generacion del id de la clase, si es que el id recibido es null, con su respectiva estrategia.
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
@@ -18,13 +21,16 @@ public class Usuario {
 	public String correo;
 	private String contrasena;
 	private double capital;
-	protected String rol;
-	public long organizacionId;
+	protected String rol;		//Los valores posibles del campo rol son: SP (SPonsor), IM (IMplementador), BR (BRainstormer), AI (Angel Investor).
+	public long organizacionId;		// id de la organizacion a la que el usuario pertenece.
+	
+	//Se especifica el formato de la fecha para poder cargar en los campos correspondientes.
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public LocalDate membresiaFechaInicio;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public LocalDate membresiaFechaExpiracion;
 
+	//Getters y Setters
 	public long getId() {
 		return id;
 	}

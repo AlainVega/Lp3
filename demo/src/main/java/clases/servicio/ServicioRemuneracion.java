@@ -3,6 +3,7 @@ package clases.servicio;
 import clases.remuneracion.Remuneracion;
 import clases.remuneracion.RemuneracionImpuesto;
 
+//Interfaz de remuneracion, para el crud del mismo
 public interface ServicioRemuneracion {
 
 	public Remuneracion crearRemuneracion(Remuneracion nuevaRemuneracion);

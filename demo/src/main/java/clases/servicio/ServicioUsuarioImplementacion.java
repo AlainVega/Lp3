@@ -15,11 +15,14 @@ import clases.usuario.Implementador;
 import clases.usuario.Sponsor;
 import clases.usuario.Usuario;
 
+//Implementacion de la interfaz de servicio de los usuarios.
+
+//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioUsuarioImplementacion implements ServicioUsuario {
 	
 	@Autowired
-	private UsuarioRepositorio usuarioRepo;
+	private UsuarioRepositorio usuarioRepo;		//Instancia del repositorio de usuarios, para poder hacer uso de los metodos que posee.
 	
 	@Override
 	public Usuario crearUsuario(Usuario nuevoUsuario) {
@@ -60,23 +63,11 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 	public void eliminarUsuario(long id) {
 		usuarioRepo.deleteById(id);
 	}
-	
-	// TODO: Arreglar para que sea mas generico, crashea si se le manda una subclase de Usuario.
+
 	@Override
 	public Usuario modificarUsuario(Usuario usuarioAct) throws IllegalArgumentException, IllegalAccessException {
-		Usuario usuarioEnDb = usuarioRepo.findById(usuarioAct.getId());
-		Field[] usuarioEnDbFields = usuarioEnDb.getClass().getDeclaredFields();
-		for(Field f : usuarioEnDbFields) {
-			f.setAccessible(true);
-			Object value1 = f.get(usuarioEnDb);
-			Object value2 = f.get(usuarioAct);
-			if(value1 != null && value2 != null) {
-				if (!Objects.equals(value1, value2)) {
-					f.set(usuarioEnDb, value2);
-				}
-			}
-		}
-		return usuarioRepo.save(usuarioEnDb);
+		// TODO Auto-generated method stub
+		return null;
 	}
-
+	
 }

@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import clases.invitacion.Invitacion;
 import clases.organizacion.Organizacion;
 import clases.pago.Pago;
+import clases.promocion.Promocion;
 import clases.remuneracion.Remuneracion;
 import clases.remuneracion.RemuneracionImpuesto;
-import clases.servicio.Promocion;
 import clases.servicio.ServicioInvitacion;
 import clases.servicio.ServicioOrganizacion;
 import clases.servicio.ServicioPago;
@@ -36,10 +36,12 @@ import clases.usuario.Implementador;
 import clases.usuario.Sponsor;
 import clases.usuario.Usuario;
 
+//Clase controlador, donde basicamente tenemos los endpoints para los usuarios, organizaciones, remuneraciones, promociones, invitaciones y pagos.
+
 @RestController
 public class Controller {
 	
-	//Usuarios
+	//###USUARIOS###
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
@@ -117,7 +119,7 @@ public class Controller {
 		servicioUsuario.eliminarUsuario(id);
 	}
 	
-	//Organizaciones
+	//###ORGANIZACIONES###
 	
 	@Autowired
 	private ServicioOrganizacion servicioOrganizacion;
@@ -145,7 +147,7 @@ public class Controller {
 		return servicioOrganizacion.agregarMiembro(Long.parseLong(json.get("idOrg")), Long.parseLong(json.get("idUsuario")));
 	}
 	
-	// Promociones
+	//###PROMOCIONES###
 	
 	@Autowired
 	private ServicioPromocion servicioPromocion;
@@ -168,7 +170,7 @@ public class Controller {
 		return servicioPromocion.buscarPromocion(producto);
 	}
 	
-	// Remuneraciones
+	//###REMUNERACIONES###
 	
 	@Autowired
 	private ServicioRemuneracion servicioRemuneracion;
@@ -194,7 +196,7 @@ public class Controller {
 		servicioRemuneracion.eliminarRemuneracion(id);
 	}
 	
-	// Invitaciones
+	//###INVITACIONES###
 	
 	@Autowired
 	private ServicioInvitacion servicioInvitacion;
@@ -223,7 +225,7 @@ public class Controller {
 		return String.format("Hay %d invitaciones expiradas.", cantidadExpiradas);
 	}
 	
-	// Pagos
+	//###PAGOS###
 	
 	@Autowired
 	private ServicioPago servicioPago;

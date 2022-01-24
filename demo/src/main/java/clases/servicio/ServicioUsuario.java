@@ -8,6 +8,7 @@ import clases.usuario.Implementador;
 import clases.usuario.Sponsor;
 import clases.usuario.Usuario;
 
+//Interfaz de usuario para el CRUD del mismo.
 public interface ServicioUsuario {
 	
 	public Usuario crearUsuario(Usuario nuevoUsuario);
