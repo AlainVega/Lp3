@@ -39,7 +39,7 @@ import clases.usuario.Usuario;
 @RestController
 public class Controller {
 	
-	//###USUARIOS###
+	// Usuarios
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
