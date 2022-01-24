@@ -8,25 +8,29 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+//Se marca como entidad a la clase, para que pueda ser visible al scaneo definido en archivo Lp3TpfApplication.java
 @Entity
 public class Invitacion {
 	
+	//Generacion del id de la clase, si es que el id recibido es null, con su respectiva estrategia.
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 	
 	public Long idDeUsuario;
 	public Long idParaUsuario;
+	//Definimos el formato de las fechas, que recibiremosm, para su posterior asignacion.
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public LocalDate fechaCreacion = LocalDate.now();
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public LocalDate fechaExpiracion = LocalDate.now().plusDays(30);
-	boolean expirado;
+	boolean expirado;		//booleano que nos sirve para determinar si la invitacion ya caduco.
 
 	public Invitacion() {
 		
 	}
 	
+	//Getters y Setters
 	public Long getId() {
 		return id;
 	}

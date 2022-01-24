@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import clases.promocion.Promocion;
+
 import clases.repositorios.PromocionRepositorio;
 
+//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioPromocionImplementacion implements ServicioPromocion {
 
 	@Autowired
-	private PromocionRepositorio promoRepo;	
+	private PromocionRepositorio promoRepo;	//instancia del repositorio de promociones
 	
 	@Override
 	public Promocion crearPromocion(Promocion promo) {

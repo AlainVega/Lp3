@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+//Aplicacion, donde se escanea tanto las entidades, como los componentes. Para su utilizacion.
+
 @SpringBootApplication
-@EntityScan({"clases.usuario", "clases.organizacion", "clases.remuneracion", "clases.servicio", "clases.invitacion", "clases.pago"})
+@EntityScan({"clases.usuario", "clases.organizacion", "clases.remuneracion", "clases.invitacion", "clases.pago", "clases.promocion"})	
 @ComponentScan({"clases.servicio", "clases.controladores"})
 @EnableJpaRepositories("clases.repositorios")
 public class Lp3TpfApplication {

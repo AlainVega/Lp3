@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import clases.organizacion.Organizacion;
 
+//Interfaz del repositorio para las organizaciones, que se utiliza en las implementaciones de los servicios de las mismas.
+
 @Repository
 @RepositoryRestResource(collectionResourceRel = "organizaciones", path = "organizaciones")
 public interface OrganizacionRepositorio extends CrudRepository<Organizacion, Long> {

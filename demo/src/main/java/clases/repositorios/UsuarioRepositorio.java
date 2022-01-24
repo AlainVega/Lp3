@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import clases.usuario.Usuario;
 
+//Interfaz del repositorio para los usuarios, que se utiliza en las implementaciones de los servicios de los mismos.
+
 @Repository
 @RepositoryRestResource(collectionResourceRel = "usuarios", path = "usuarios")
 public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {

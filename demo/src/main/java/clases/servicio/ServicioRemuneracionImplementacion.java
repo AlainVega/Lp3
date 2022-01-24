@@ -9,11 +9,12 @@ import clases.remuneracion.Remuneracion;
 import clases.remuneracion.RemuneracionImpuesto;
 import clases.repositorios.RemuneracionRepositorio;
 
+//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioRemuneracionImplementacion implements ServicioRemuneracion {
 	
 	@Autowired
-	private RemuneracionRepositorio remuRepo;
+	private RemuneracionRepositorio remuRepo;		//Instancia al repositorio de remuneraciones, para poder hacer uso de los metodos de posee.
 	
 	@Override
 	public Remuneracion crearRemuneracion(Remuneracion nuevaRemu) {

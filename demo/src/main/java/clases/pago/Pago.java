@@ -5,20 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//Se marca como entidad a la clase, para que pueda ser visible al scaneo definido en archivo Lp3TpfApplication.java
 @Entity
 public class Pago {
 
+	//Generacion del id de la clase, si es que el id recibido es null, con su respectiva estrategia.
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
 	
-	public long idRemuneracion;
-	public long idUsuario;
-	public long idOrganizacion;
-	public double subTotal;
-	public double impuesto;
-	public double total;
+	public long idRemuneracion;		//id de la remuneracion asociada
+	public long idUsuario;			//id de quien paga
+	public long idOrganizacion;		//id a quien paga
+	public double subTotal;			//monto si posible impuesto
+	public double impuesto;			//valor numerico del impuesto, si es que hay impuesto asociado a la remuneracion
+	public double total;			//la suma de subtotal e impuesto
 	
+	//Getters y Setters
 	public long getId() {
 		return id;
 	}

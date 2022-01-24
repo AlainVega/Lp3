@@ -7,18 +7,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//Se marca como entidad a la clase, para que pueda ser visible al scaneo definido en archivo Lp3TpfApplication.java
 @Entity
 public class Organizacion {
 	
+	//Generacion del id de la clase, si es que el id recibido es null, con su respectiva estrategia.
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
 	
 	public String tipo;
 	public String nombre;
-	public ArrayList<Long> listaUsuarios = new ArrayList<Long>();
+	public ArrayList<Long> listaUsuarios = new ArrayList<Long>();		//Lista de miembros de la organizacion.
 	public double capital;
+
 	
+	//Getters y Setters
 	public long getId() {
 		return id;
 	}

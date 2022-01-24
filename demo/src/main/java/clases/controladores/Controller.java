@@ -34,10 +34,12 @@ import clases.usuario.Implementador;
 import clases.usuario.Sponsor;
 import clases.usuario.Usuario;
 
+//Clase controlador, donde basicamente tenemos los endpoints para los usuarios, organizaciones, remuneraciones, promociones, invitaciones y pagos.
+
 @RestController
 public class Controller {
 	
-	// Usuarios
+	//###USUARIOS###
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
@@ -268,7 +270,6 @@ public class Controller {
 	public Remuneracion actualizarRemuneracionImpuesto(@RequestBody RemuneracionImpuesto remuImpAct) {
 		return servicioRemuneracion.actualizarRemuneracionImpuesto(remuImpAct);
 	}
-	
 	
 	@DeleteMapping("/eliminarRemuneracion/{id}")
 	public void eliminarRemuneracion(@PathVariable long id) {
