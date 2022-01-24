@@ -17,7 +17,7 @@ public class Usuario {
 	public String nombre;
 	public String correo;
 	private String contrasena;
-	private double capital;
+	private double capital = 0;
 	protected String rol;
 	public long organizacionId;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")

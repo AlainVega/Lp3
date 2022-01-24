@@ -1,8 +1,6 @@
 package clases.controladores;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import clases.invitacion.Invitacion;
 import clases.organizacion.Organizacion;
 import clases.pago.Pago;
+import clases.promocion.Promocion;
 import clases.remuneracion.Remuneracion;
 import clases.remuneracion.RemuneracionImpuesto;
-import clases.servicio.Promocion;
 import clases.servicio.ServicioInvitacion;
 import clases.servicio.ServicioOrganizacion;
 import clases.servicio.ServicioPago;
@@ -45,15 +43,7 @@ public class Controller {
 	private ServicioUsuario servicioUsuario;
 	
 	@PutMapping(
-			value = "/crearUsuario",
-			consumes = {MediaType.APPLICATION_JSON_VALUE},
-			produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Usuario CrearUsuario(@RequestBody Usuario usuario) {
-		return servicioUsuario.crearUsuario(usuario);
-	}
-	
-	@PutMapping(
-			value = {"/crearUsuario/administrador", "/actualizarUsuario/administrador"},
+			value = "/crearUsuario/administrador",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearAdministrador(@RequestBody Administrador administrador) {
@@ -61,7 +51,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = {"/crearUsuario/angelInvestor", "/actualizarUsuario/angelInvestor"},
+			value = "/crearUsuario/angelInvestor",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearAngelInvestor(@RequestBody AngelInvestor angelInvestor) {
@@ -69,7 +59,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = {"/crearUsuario/brainstormer", "/actualizarUsuario/brainstormer"},
+			value = "/crearUsuario/brainstormer",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearBrainstormer(@RequestBody Brainstormer brainstormer) {
@@ -78,7 +68,7 @@ public class Controller {
 	
 	
 	@PutMapping(
-			value = {"/crearUsuario/implementador", "/actualizarUsuario/implementador"},
+			value = "/crearUsuario/implementador",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearImplementador(@RequestBody Implementador implementador) {
@@ -86,7 +76,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = {"/crearUsuario/sponsor", "/actualizarUsuario/sponsor"},
+			value = "/crearUsuario/sponsor",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario CrearSponsor(@RequestBody Sponsor sponsor) {
@@ -94,11 +84,43 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = "/actualizarUsuario",
+			value = "/actualizarUsuario/Administrador",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Usuario actualizarUsuario(@RequestBody Usuario usuario) throws IllegalArgumentException, IllegalAccessException {
-		return servicioUsuario.modificarUsuario(usuario);
+	public Usuario actualizarUsuario(@RequestBody Administrador administrador) {
+		return servicioUsuario.actualizarAdministrador(administrador);
+	}
+	
+	@PutMapping(
+			value = "/actualizarAngelInvestor",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Usuario actualizarAngelInvestor(@RequestBody AngelInvestor angelInvestor) {
+		return servicioUsuario.actualizarAngelInvestor(angelInvestor);
+	}
+	
+	@PutMapping(
+			value = "/actualizarBrainstormer",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Usuario actualizarBrainstormer(@RequestBody Brainstormer brainstormer) {
+		return servicioUsuario.actualizarBrainstormer(brainstormer);
+	}
+	
+	@PutMapping(
+			value = "/actualizarImplementador",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Usuario actualizarImplementador(@RequestBody Implementador implementador) {
+		return servicioUsuario.actualizarImplementador(implementador);
+	}
+	
+	@PutMapping(
+			value = "/actualizarSponsor",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Usuario actualizarSponsor(@RequestBody Sponsor sponsor) {
+		return servicioUsuario.actualizarSponsor(sponsor);
 	}
 	
 	@GetMapping("/listarUsuarios/")
@@ -174,7 +196,7 @@ public class Controller {
 	private ServicioRemuneracion servicioRemuneracion;
 	
 	@PutMapping(
-			value = {"/crearRemuneracion", "/actualizarRemuneracion"},
+			value = "/crearRemuneracion",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Remuneracion crearRemuneracion(@RequestBody Remuneracion remu) {
@@ -182,12 +204,29 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = {"/crearRemuneracionImpuesto", "/actualizarRemuneracionImpuesto"},
+			value = "/crearRemuneracionImpuesto",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public RemuneracionImpuesto crearRemuneracionImpuesto(@RequestBody RemuneracionImpuesto remuImpuesto) {
 		return servicioRemuneracion.crearRemuneracionImpuesto(remuImpuesto);
 	}
+	
+	@PutMapping(
+			value = "/actualizarRemuneracion",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Remuneracion actualizarRemuneracion(@RequestBody Remuneracion remuAct) {
+		return servicioRemuneracion.actualizarRemuneracion(remuAct);
+	}
+	
+	@PutMapping(
+			value = "/actualizarRemuneracionImpuesto",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Remuneracion actualizarRemuneracionImpuesto(@RequestBody RemuneracionImpuesto remuImpAct) {
+		return servicioRemuneracion.actualizarRemuneracionImpuesto(remuImpAct);
+	}
+	
 	
 	@DeleteMapping("/eliminarRemuneracion/{id}")
 	public void eliminarRemuneracion(@PathVariable long id) {

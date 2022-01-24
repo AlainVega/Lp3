@@ -9,5 +9,4 @@ import clases.invitacion.Invitacion;
 @Repository
 @RepositoryRestResource(collectionResourceRel = "invitaciones", path = "invitaciones")
 public interface InvitacionRepositorio extends CrudRepository<Invitacion, Long> {
-	Invitacion findById(long id);
 }

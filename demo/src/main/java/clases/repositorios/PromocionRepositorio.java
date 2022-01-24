@@ -6,11 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-import clases.servicio.Promocion;
+import clases.promocion.Promocion;
 
 @Repository
-@RepositoryRestResource(collectionResourceRel = "promocion", path = "promocion")
+@RepositoryRestResource(collectionResourceRel = "promociones", path = "promociones")
 public interface PromocionRepositorio extends CrudRepository<Promocion, Long> {
-	Promocion findById(long id);
 	ArrayList<Promocion> findByProducto(String producto);
 }

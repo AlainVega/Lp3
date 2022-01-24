@@ -8,5 +8,5 @@ public interface ServicioPago {
 	public void eliminarPago(long id);
 	public Pago modificarPago(Pago pagoAct);
 	public Pago buscarPago(long id);
-	
+
 }

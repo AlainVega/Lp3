@@ -27,17 +27,18 @@ public class ServicioOrganizacionImplementacion implements ServicioOrganizacion 
 
 	@Override
 	public void eliminarOrg(long id) {
-		try {
+		if (orgRepo.existsById(id)) {
 			orgRepo.deleteById(id);
-		}
-		catch (Exception e) {
-			System.out.println("La organizacion no existe.");
 		}
 			
 	}
 
 	@Override
-	public Organizacion modificarOrg(Organizacion organizacionAct) {
+	public Organizacion actualizarOrg(Organizacion orgAct) {
+		Optional<Organizacion> orgOpt = orgRepo.findById(orgAct.getId());
+		if (orgOpt.isPresent()) {
+			return orgRepo.save(orgOpt.get());
+		}
 		return null;
 	}
 

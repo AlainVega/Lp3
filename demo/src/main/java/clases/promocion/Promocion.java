@@ -1,6 +1,5 @@
-package clases.servicio;
+package clases.promocion;
 import java.time.LocalDate;
-//import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,30 +26,39 @@ public class Promocion {
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	public String getProducto() {
 		return producto;
 	}
+	
 	public void setProducto(String producto) {
 		this.producto = producto;
 	}
+	
 	public int getIdOrg() {
 		return idOrg;
 	}
+	
 	public void setIdOrg(int idOrg) {
 		this.idOrg = idOrg;
 	}
+	
 	public LocalDate getFechaEmision() {
 		return fechaEmision;
 	}
+	
 	public void setFechaEmision(LocalDate fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
+	
 	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
+	
 	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}

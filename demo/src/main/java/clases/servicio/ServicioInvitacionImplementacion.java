@@ -16,26 +16,33 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 	
 	@Autowired
 	private InvitacionRepositorio invRepo;
+	
 	@Autowired
 	private UsuarioRepositorio usuarioRepo;
 	
 	@Override
-	public Invitacion crearInv(Invitacion nuevaInvitacion) {
-		return invRepo.save(nuevaInvitacion);
+	public Invitacion crearInv(Invitacion nuevaInv) {
+		return invRepo.save(nuevaInv);
 	}
 
 	@Override
 	public void eliminarInv(long id) {
-		invRepo.deleteById(id);
+		if (invRepo.existsById(id)) {
+			invRepo.deleteById(id);
+		}
 	}
 
 	@Override
-	public Invitacion modificarInv(Invitacion invitacionAct) {
-		return invRepo.save(invitacionAct);
+	public Invitacion modificarInv(Invitacion invAct) {
+		Optional<Invitacion> invOpt = invRepo.findById(invAct.getId());
+		if (invOpt.isPresent()) {
+			return invRepo.save(invOpt.get());
+		}
+		return null;
 	}
 
 	@Override
-	public Integer checkearExpiracionTodas() {
+	public int checkearExpiracionTodas() {
 		Iterable<Invitacion> invitaciones = invRepo.findAll();
 		LocalDate todayDate = LocalDate.now();
 		Integer contador = 0;
@@ -55,9 +62,24 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 
 	@Override
 	public void aceptarInvitacion(long id) {
-		Invitacion invitacion = invRepo.findById(id);
-		Optional<Usuario> usuarioOptional = usuarioRepo.findById(invitacion.getIdParaUsuario());
-		Usuario usuario = usuarioOptional.get();
+		Optional<Invitacion> invOpt = invRepo.findById(id);
+		
+		if (invOpt.isEmpty()) {
+			System.out.println("No existe la invitacion.");
+			return;
+		}
+			
+		Invitacion invitacion = invOpt.get();
+		
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(invitacion.getIdParaUsuario());
+		
+		if (usuarioOpt.isEmpty()) {
+			System.out.println("No existe el usuario.");
+			return;
+		}
+		
+		Usuario usuario = usuarioOpt.get();
+		
 		if (usuario != null) {
 			usuario.setMembresiaFechaInicio(LocalDate.now());
 			usuario.setMembresiaFechaExpiracion(LocalDate.now().plusDays(30));

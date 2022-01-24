@@ -1,8 +1,7 @@
 package clases.servicio;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,14 +19,9 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 	
 	@Autowired
 	private UsuarioRepositorio usuarioRepo;
-	
-	@Override
-	public Usuario crearUsuario(Usuario nuevoUsuario) {
-		return usuarioRepo.save(nuevoUsuario);
-	}
 
 	@Override
-	public Usuario crearAdministrador(Administrador administrador) {
+	public Administrador crearAdministrador(Administrador administrador) {
 		return usuarioRepo.save(administrador);
 	}
 	
@@ -52,31 +46,60 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 	}
 
 	@Override
+	public Administrador actualizarAdministrador(Administrador administradorAct) {
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(administradorAct.getId());
+		if (usuarioOpt.isPresent()) {
+			return usuarioRepo.save(administradorAct);
+		}
+		return null;
+	}
+	
+	@Override
+	public AngelInvestor actualizarAngelInvestor(AngelInvestor angelInvestorAct) {
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(angelInvestorAct.getId());
+		if (usuarioOpt.isPresent()) {
+			return usuarioRepo.save(angelInvestorAct);
+		}
+		return null;
+	}
+	
+	@Override
+	public Brainstormer actualizarBrainstormer(Brainstormer brainstormerAct) {
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(brainstormerAct.getId());
+		if (usuarioOpt.isPresent()) {
+			return usuarioRepo.save(brainstormerAct);
+		}
+		return null;
+	}
+	
+	@Override
+	public Implementador actualizarImplementador(Implementador implementadorAct) {
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(implementadorAct.getId());
+		if (usuarioOpt.isPresent()) {
+			return usuarioRepo.save(implementadorAct);
+		}
+		return null;
+	}
+
+	@Override
+	public Sponsor actualizarSponsor(Sponsor sponsorAct) {
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(sponsorAct.getId());
+		if (usuarioOpt.isPresent()) {
+			return usuarioRepo.save(sponsorAct);
+		}
+		return null;
+	}
+	
+	@Override
 	public ArrayList<Usuario> listarPorRol(String rol) {
 		return usuarioRepo.findByRol(rol);
 	}
 	
 	@Override
 	public void eliminarUsuario(long id) {
-		usuarioRepo.deleteById(id);
+		if (usuarioRepo.existsById(id)) {
+			usuarioRepo.deleteById(id);
+		}
 	}
 	
-	// TODO: Arreglar para que sea mas generico, crashea si se le manda una subclase de Usuario.
-	@Override
-	public Usuario modificarUsuario(Usuario usuarioAct) throws IllegalArgumentException, IllegalAccessException {
-		Usuario usuarioEnDb = usuarioRepo.findById(usuarioAct.getId());
-		Field[] usuarioEnDbFields = usuarioEnDb.getClass().getDeclaredFields();
-		for(Field f : usuarioEnDbFields) {
-			f.setAccessible(true);
-			Object value1 = f.get(usuarioEnDb);
-			Object value2 = f.get(usuarioAct);
-			if(value1 != null && value2 != null) {
-				if (!Objects.equals(value1, value2)) {
-					f.set(usuarioEnDb, value2);
-				}
-			}
-		}
-		return usuarioRepo.save(usuarioEnDb);
-	}
-
 }
