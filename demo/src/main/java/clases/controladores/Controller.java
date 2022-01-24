@@ -37,7 +37,7 @@ import clases.usuario.Usuario;
 @RestController
 public class Controller {
 	
-	//Usuarios
+	// Usuarios
 	
 	@Autowired
 	private ServicioUsuario servicioUsuario;
@@ -139,17 +139,25 @@ public class Controller {
 		servicioUsuario.eliminarUsuario(id);
 	}
 	
-	//Organizaciones
+	// Organizaciones
 	
 	@Autowired
 	private ServicioOrganizacion servicioOrganizacion;
 	
 	@PutMapping(
-			value = {"/crearOrganizacion", "/actualizarOrganizacion"},
+			value = "/crearOrganizacion",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Organizacion crearOrganizacion(@RequestBody Organizacion organizacion) {
 		return servicioOrganizacion.crearOrg(organizacion);
+	}
+	
+	@PutMapping(
+			value = "/actualizarOrganizacion",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Organizacion actualizarOrganizacion(@RequestBody Organizacion organizacionAct) {
+		return servicioOrganizacion.actualizarOrg(organizacionAct);
 	}
 	
 	@DeleteMapping("/eliminarOrganizacion/{id}")
@@ -173,11 +181,19 @@ public class Controller {
 	private ServicioPromocion servicioPromocion;
 	
 	@PutMapping(
-			value = {"/crearPromocion", "/actualizarPromocion"},
+			value = "/crearPromocion",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Promocion crearPromocion(@RequestBody Promocion promocion) {
 		return servicioPromocion.crearPromocion(promocion);
+	}
+	
+	@PutMapping(
+			value = "/crearPromocion",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Promocion actualizarPromocion(@RequestBody Promocion promocionAct) {
+		return servicioPromocion.actualizarPromocion(promocionAct);
 	}
 	
 	@DeleteMapping("/eliminarPromocion/{id}")
@@ -246,6 +262,14 @@ public class Controller {
 		return servicioInvitacion.crearInv(invitacion);
 	}
 	
+	@PutMapping(
+			value = "/actualizaInvitacion",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Invitacion actualizarInvitacion(@RequestBody Invitacion invitacionAct) {
+		return servicioInvitacion.actualizarInv(invitacionAct);
+	}
+	
 	@DeleteMapping("/eliminarInvitacion/{id}")
 	public void eliminarInvitacion(@PathVariable long id) {
 		servicioInvitacion.eliminarInv(id);
@@ -273,6 +297,14 @@ public class Controller {
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Pago crearPago(@RequestBody Pago pago) {
 		return servicioPago.crearPago(pago);
+	}
+	
+	@PutMapping(
+			value = "/actualizarPago",
+			consumes = {MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Pago actualizarPago(@RequestBody Pago pagoAct) {
+		return servicioPago.actualizarPago(pagoAct);
 	}
 	
 	@DeleteMapping("/eliminarPago/{id}")

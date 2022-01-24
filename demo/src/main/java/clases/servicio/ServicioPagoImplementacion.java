@@ -99,7 +99,7 @@ public class ServicioPagoImplementacion implements ServicioPago {
 	}
 
 	@Override
-	public Pago modificarPago(Pago pagoAct) {
+	public Pago actualizarPago(Pago pagoAct) {
 		Optional<Pago> pagoOpt = pagoRepo.findById(pagoAct.getId());
 		if (pagoOpt.isPresent()) {
 			return pagoRepo.save(pagoOpt.get());
