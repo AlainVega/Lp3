@@ -101,5 +101,14 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 			usuarioRepo.deleteById(id);
 		}
 	}
+
+	@Override
+	public Usuario buscarUsuario(long id) {
+		Optional<Usuario> usuarioOpt = usuarioRepo.findById(id);
+		if (usuarioOpt.isPresent()) {
+			return usuarioOpt.get();
+		}
+		return null;
+	}
 	
 }

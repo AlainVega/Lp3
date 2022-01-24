@@ -89,5 +89,14 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 			System.out.println("Usuario no encontrado.");
 		}
 	}
+
+	@Override
+	public Invitacion buscarInvitacion(long id) {
+		Optional<Invitacion> invOpt = invRepo.findById(id);
+		if (invOpt.isPresent()) {
+			return invOpt.get();
+		}
+		return null;
+	}
 	
 }

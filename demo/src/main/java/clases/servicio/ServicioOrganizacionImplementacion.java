@@ -66,4 +66,13 @@ public class ServicioOrganizacionImplementacion implements ServicioOrganizacion 
 		}
 		return orgRepo.save(org);
 	}
+
+	@Override
+	public Organizacion buscarOrganizacion(long id) {
+		Optional<Organizacion> orgOpt = orgRepo.findById(id);
+		if (orgOpt.isPresent()) {
+			return orgOpt.get();
+		}
+		return null;
+	}
 }

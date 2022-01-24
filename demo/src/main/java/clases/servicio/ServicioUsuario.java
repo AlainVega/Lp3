@@ -25,5 +25,6 @@ public interface ServicioUsuario {
 	public void eliminarUsuario(long id);
 	
 	public ArrayList<Usuario> listarPorRol(String rol);
+	public Usuario buscarUsuario(long id);
 	
 }

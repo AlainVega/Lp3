@@ -66,7 +66,6 @@ public class Controller {
 		return servicioUsuario.crearBrainstormer(brainstormer);
 	}
 	
-	
 	@PutMapping(
 			value = "/crearUsuario/implementador",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
@@ -139,6 +138,11 @@ public class Controller {
 		servicioUsuario.eliminarUsuario(id);
 	}
 	
+	@GetMapping("/buscarUsuario/{id}")
+	public Usuario buscarUsuario(@PathVariable long id) {
+		return servicioUsuario.buscarUsuario(id);
+	}
+	
 	// Organizaciones
 	
 	@Autowired
@@ -175,6 +179,11 @@ public class Controller {
 		return servicioOrganizacion.agregarMiembro(Long.parseLong(json.get("idOrg")), Long.parseLong(json.get("idUsuario")));
 	}
 	
+	@GetMapping("/buscarOrganizacion/{id}")
+	public Organizacion buscarOrganizacion(@PathVariable long id) {
+		return servicioOrganizacion.buscarOrganizacion(id);
+	}
+	
 	// Promociones
 	
 	@Autowired
@@ -204,6 +213,11 @@ public class Controller {
 	@GetMapping("/listarPromociones/{producto}")
 	public ArrayList<Promocion> listarPromociones(@PathVariable String producto) {
 		return servicioPromocion.buscarPromocion(producto);
+	}
+	
+	@GetMapping("/buscarPromocion/{id}")
+	public Promocion buscarPromocion(@PathVariable long id) {
+		return servicioPromocion.buscarPromocion(id);
 	}
 	
 	// Remuneraciones
@@ -249,6 +263,11 @@ public class Controller {
 		servicioRemuneracion.eliminarRemuneracion(id);
 	}
 	
+	@GetMapping("/buscarRemuneracion/{id}")
+	public Remuneracion buscarRemuneracion(@PathVariable long id) {
+		return servicioRemuneracion.buscarRemuneracion(id);
+	}
+	
 	// Invitaciones
 	
 	@Autowired
@@ -286,13 +305,18 @@ public class Controller {
 		return String.format("Hay %d invitaciones expiradas.", cantidadExpiradas);
 	}
 	
+	@GetMapping("/buscarInvitacion/{id}")
+	public Invitacion buscarInvitacion(@PathVariable long id) {
+		return servicioInvitacion.buscarInvitacion(id);
+	}
+	
 	// Pagos
 	
 	@Autowired
 	private ServicioPago servicioPago;
 	
 	@PutMapping(
-			value = {"/crearPago", "/actualizarPago"},
+			value = "/crearPago",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Pago crearPago(@RequestBody Pago pago) {
@@ -312,7 +336,7 @@ public class Controller {
 		servicioPago.eliminarPago(id);
 	}
 	
-	@GetMapping("/pagos/{id}")
+	@GetMapping("/buscarPago/{id}")
 	public Pago obtenerPago(@PathVariable long id) {
 		return servicioPago.buscarPago(id);
 	}

@@ -8,4 +8,5 @@ public interface ServicioInvitacion {
 	public Invitacion actualizarInv(Invitacion invitacionAct);
 	public int checkearExpiracionTodas();
 	public void aceptarInvitacion(long id);
+	public Invitacion buscarInvitacion(long id);
 }
