@@ -169,6 +169,12 @@ public class Controller {
 		servicioOrganizacion.eliminarOrg(id);
 	}
 	
+	@GetMapping("/listarOrganizaciones/")
+	public ArrayList<Organizacion> listarOrganizaciones(HttpServletResponse httpResponse) throws Exception {
+		httpResponse.sendRedirect("/organizaciones");
+		return null;
+	}
+	
 	@GetMapping("/listarOrganizaciones/{tipo}")
 	public ArrayList<Organizacion> listarOrganizaciones(@PathVariable String tipo) {
 		return servicioOrganizacion.listarPorTipo(tipo);
@@ -198,7 +204,7 @@ public class Controller {
 	}
 	
 	@PutMapping(
-			value = "/crearPromocion",
+			value = "/actualizarPromocion",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Promocion actualizarPromocion(@RequestBody Promocion promocionAct) {
@@ -208,6 +214,12 @@ public class Controller {
 	@DeleteMapping("/eliminarPromocion/{id}")
 	public void eliminarPromocion(@PathVariable long id) {
 		servicioPromocion.eliminarPromocion(id);
+	}
+	
+	@GetMapping("/listarPromociones")
+	public ArrayList<Promocion> listarPromociones(HttpServletResponse httpResponse) throws Exception {
+		httpResponse.sendRedirect("/promociones");
+		return null;
 	}
 	
 	@GetMapping("/listarPromociones/{producto}")
@@ -268,6 +280,12 @@ public class Controller {
 		return servicioRemuneracion.buscarRemuneracion(id);
 	}
 	
+	@GetMapping("/listarRemuneraciones")
+	public ArrayList<Remuneracion> listarRemuneraciones(HttpServletResponse httpResponse) throws Exception {
+		httpResponse.sendRedirect("/remuneraciones");
+		return null;
+	}
+	
 	// Invitaciones
 	
 	@Autowired
@@ -305,6 +323,12 @@ public class Controller {
 		return String.format("Hay %d invitaciones expiradas.", cantidadExpiradas);
 	}
 	
+	@GetMapping("/listarInvitaciones")
+	public ArrayList<Invitacion> listarInvitaciones(HttpServletResponse httpResponse) throws Exception {
+		httpResponse.sendRedirect("/invitaciones");
+		return null;
+	}
+	
 	@GetMapping("/buscarInvitacion/{id}")
 	public Invitacion buscarInvitacion(@PathVariable long id) {
 		return servicioInvitacion.buscarInvitacion(id);
@@ -334,6 +358,12 @@ public class Controller {
 	@DeleteMapping("/eliminarPago/{id}")
 	public void eliminarPago(@PathVariable long id) {
 		servicioPago.eliminarPago(id);
+	}
+	
+	@GetMapping("/listarPagos")
+	public ArrayList<Pago> listarPagos(HttpServletResponse httpResponse) throws Exception {
+		httpResponse.sendRedirect("/pagos");
+		return null;
 	}
 	
 	@GetMapping("/buscarPago/{id}")
