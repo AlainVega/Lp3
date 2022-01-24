@@ -13,8 +13,7 @@ import clases.remuneracion.Remuneracion;
 @Repository
 @RepositoryRestResource(collectionResourceRel = "remuneraciones", path = "remuneraciones")
 public interface RemuneracionRepositorio extends CrudRepository<Remuneracion, Long> {
-	Remuneracion findById(long id);
-	@Query(value = "select porcentaje_impuesto from Remuneracion r where r.id=:remuId", nativeQuery = true)	//hacemos la consulta a la base datos, por una columna dado un parametro.
+	@Query(value = "select porcentaje_impuesto from Remuneracion r where r.id=:remuId", nativeQuery = true)
     Double getPorcentajeImpuesto(@Param("remuId") Long remuId);
 	@Query(value = "select monto_total from Remuneracion x where x.id=:remuId", nativeQuery = true) //hacemos la consulta a la base datos, por una columna dado un parametro.
     Double getMontoTotal(@Param("remuId") Long remuId);

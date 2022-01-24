@@ -12,9 +12,7 @@ import clases.usuario.Usuario;
 
 @Repository
 @RepositoryRestResource(collectionResourceRel = "usuarios", path = "usuarios")
-public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> { 
-	Usuario findById(long id);
+public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
 	ArrayList<Usuario> findByRol(String rol);
 	boolean existsById(long id);
-	
 }

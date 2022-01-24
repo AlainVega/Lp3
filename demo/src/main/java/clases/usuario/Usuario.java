@@ -20,7 +20,7 @@ public class Usuario {
 	public String nombre;
 	public String correo;
 	private String contrasena;
-	private double capital;
+	private double capital = 0;
 	protected String rol;		//Los valores posibles del campo rol son: SP (SPonsor), IM (IMplementador), BR (BRainstormer), AI (Angel Investor).
 	public long organizacionId;		// id de la organizacion a la que el usuario pertenece.
 	

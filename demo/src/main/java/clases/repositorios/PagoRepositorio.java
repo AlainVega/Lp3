@@ -11,5 +11,4 @@ import clases.pago.Pago;
 @Repository
 @RepositoryRestResource(collectionResourceRel = "pagos", path = "pagos")
 public interface PagoRepositorio extends CrudRepository<Pago, Long> {
-	public Pago findById(long id);
 }

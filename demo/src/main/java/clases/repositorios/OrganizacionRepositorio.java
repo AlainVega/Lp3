@@ -13,6 +13,5 @@ import clases.organizacion.Organizacion;
 @Repository
 @RepositoryRestResource(collectionResourceRel = "organizaciones", path = "organizaciones")
 public interface OrganizacionRepositorio extends CrudRepository<Organizacion, Long> {
-	Organizacion findById(long id);
 	ArrayList<Organizacion> findByTipo(String tipo);
 }
