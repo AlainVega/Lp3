@@ -75,7 +75,7 @@ public class ControllerUsuario {
 			value = "/actualizarAdministrador",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Usuario actualizarUsuario(@RequestBody Administrador administrador) {
+	public Usuario actualizarAdministrador(@RequestBody Administrador administrador) {
 		return servicioUsuario.actualizarAdministrador(administrador);
 	}
 	
@@ -130,6 +130,11 @@ public class ControllerUsuario {
 	@GetMapping("/buscarUsuario/{id}")
 	public Usuario buscarUsuario(@PathVariable long id) {
 		return servicioUsuario.buscarUsuario(id);
+	}
+	
+	@GetMapping("/checkearMembresia")
+	public void checkearMembresia() {
+		servicioUsuario.enviarCorreoPorExpirar();
 	}
 	
 }
