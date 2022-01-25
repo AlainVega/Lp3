@@ -65,7 +65,7 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 			}
 			invRepo.save(inv);
 		}
-		return contador;		// retorna la cantidad de invitaciones que expiraron.
+		return contador;
 	}
 	
 	// Acepta la invitacion con el id pasado y actualiza la membresia del usuario
@@ -78,7 +78,6 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 			System.out.println("No existe la invitacion.");
 			return;
 		}
-		
 		
 		// Conseguir el id del usuario para el cual es la invitacion
 		Invitacion invitacion = invOpt.get();
