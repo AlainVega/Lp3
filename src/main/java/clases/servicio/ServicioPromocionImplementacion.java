@@ -10,13 +10,14 @@ import clases.promocion.Promocion;
 
 import clases.repositorios.PromocionRepositorio;
 
-//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
+// Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioPromocionImplementacion implements ServicioPromocion {
 
 	@Autowired
-	private PromocionRepositorio promoRepo;	//instancia del repositorio de promociones
+	private PromocionRepositorio promoRepo;	// Instancia del repositorio de promociones
 	
+	// Crea una entrada en la base de datos con los datos de promo
 	@Override
 	public Promocion crearPromocion(Promocion promo) {
 		return promoRepo.save(promo);
@@ -29,6 +30,7 @@ public class ServicioPromocionImplementacion implements ServicioPromocion {
 		}
 	}
 
+	// Actualiza la entrada en la base de datos con los datos de promoAct
 	@Override
 	public Promocion actualizarPromocion(Promocion promoAct) {
 		Optional<Promocion> promoOpt = promoRepo.findById(promoAct.getId());
@@ -38,11 +40,13 @@ public class ServicioPromocionImplementacion implements ServicioPromocion {
 		return null;
 	}
 
+	// Retorna una lista de todas las promociones que tengan el mismo producto
 	@Override
 	public ArrayList<Promocion> buscarPromocion(String producto) {
 		return promoRepo.findByProducto(producto);
 	}
 
+	// Retorna una instancia de promocion con la id pasada de la base de datos si existe
 	@Override
 	public Promocion buscarPromocion(long id) {
 		Optional<Promocion> promoOpt = promoRepo.findById(id);

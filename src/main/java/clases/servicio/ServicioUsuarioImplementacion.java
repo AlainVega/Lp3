@@ -14,15 +14,16 @@ import clases.usuario.Implementador;
 import clases.usuario.Sponsor;
 import clases.usuario.Usuario;
 
-//Implementacion de la interfaz de servicio de los usuarios.
+// Implementacion de la interfaz de servicio de los usuarios.
 
-//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
+// Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioUsuarioImplementacion implements ServicioUsuario {
 	
 	@Autowired
-	private UsuarioRepositorio usuarioRepo;		//Instancia del repositorio de usuarios, para poder hacer uso de los metodos que posee.
+	private UsuarioRepositorio usuarioRepo;		// Instancia del repositorio de usuarios, para poder hacer uso de los metodos que posee.
 	
+	// Funciones para agregar diferentes subclases de Usuario a la base de dato
 	@Override
 	public Administrador crearAdministrador(Administrador administrador) {
 		return usuarioRepo.save(administrador);
@@ -48,6 +49,7 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 		return usuarioRepo.save(nuevoSponsor);
 	}
 
+	// Funciones para actualizar todas las subclases de Usuario en la base de datos
 	@Override
 	public Administrador actualizarAdministrador(Administrador administradorAct) {
 		Optional<Usuario> usuarioOpt = usuarioRepo.findById(administradorAct.getId());
@@ -93,6 +95,7 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 		return null;
 	}
 	
+	// Retorna una lista de todos los usuarios que tengan el rol deseado
 	@Override
 	public ArrayList<Usuario> listarPorRol(String rol) {
 		return usuarioRepo.findByRol(rol);
@@ -105,6 +108,7 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 		}
 	}
 
+	// Retorna una instancia de usuario con la id pasada de la base de datos si existe
 	@Override
 	public Usuario buscarUsuario(long id) {
 		Optional<Usuario> usuarioOpt = usuarioRepo.findById(id);

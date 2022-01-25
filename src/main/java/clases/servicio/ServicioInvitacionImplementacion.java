@@ -11,17 +11,18 @@ import clases.repositorios.InvitacionRepositorio;
 import clases.repositorios.UsuarioRepositorio;
 import clases.usuario.Usuario;
 
-//Implementacion del servicio invitacion, para el uso del crud.
+// Implementacion del servicio invitacion, para el uso del crud.
 
-//Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
+// Se marca como servicio a la clase, para el posterior escano de componentes en el archivo Lp3TpfApplication.java
 @Service
 public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 	
+	// Repositorios a ser utilizados
 	@Autowired
-	private InvitacionRepositorio invRepo;		//Instancia del repositorio invitacion, para la utilizacion de metodos crud.
+	private InvitacionRepositorio invRepo;
 
 	@Autowired
-	private UsuarioRepositorio usuarioRepo;		//Instancia del repositorio usuario, se utiliza en aceptar invitacion.
+	private UsuarioRepositorio usuarioRepo;
 	
 	@Override
 	public Invitacion crearInv(Invitacion nuevaInv) {
@@ -35,6 +36,7 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 		}
 	}
 
+	// Actualiza la entrada con los datos de invAct y lo retorna
 	@Override
 	public Invitacion actualizarInv(Invitacion invAct) {
 		Optional<Invitacion> invOpt = invRepo.findById(invAct.getId());
@@ -44,6 +46,8 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 		return null;
 	}
 
+	// Checkea la expiracion de todas las invitaciones creadas
+	// Retorna la cantidad de invitaciones expiradas
 	@Override
 	public int checkearExpiracionTodas() {
 		Iterable<Invitacion> invitaciones = invRepo.findAll();
@@ -62,16 +66,20 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 		}
 		return contador;		// retorna la cantidad de invitaciones que expiraron.
 	}
-
+	
+	// Acepta la invitacion con el id pasado y actualiza la membresia del usuario
 	@Override
 	public void aceptarInvitacion(long id) {
+		// Verificar la existencia del usuario y la invitacion
 		Optional<Invitacion> invOpt = invRepo.findById(id);
 		
 		if (invOpt.isEmpty()) {
 			System.out.println("No existe la invitacion.");
 			return;
 		}
-			
+		
+		
+		// Conseguir el id del usuario para el cual es la invitacion
 		Invitacion invitacion = invOpt.get();
 		
 		Optional<Usuario> usuarioOpt = usuarioRepo.findById(invitacion.getIdParaUsuario());
@@ -83,6 +91,7 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 		
 		Usuario usuario = usuarioOpt.get();
 		
+		// Calcular las fechas para la membresia y ponerlas al usuario
 		if (usuario != null) {
 			usuario.setMembresiaFechaInicio(LocalDate.now());
 			usuario.setMembresiaFechaExpiracion(LocalDate.now().plusDays(30));
@@ -93,6 +102,7 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 		}
 	}
 
+	// Retorna una instancia de invitacion con la id pasada de la base de datos si existe
 	@Override
 	public Invitacion buscarInvitacion(long id) {
 		Optional<Invitacion> invOpt = invRepo.findById(id);

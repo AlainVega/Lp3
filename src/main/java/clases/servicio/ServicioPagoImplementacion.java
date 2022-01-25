@@ -22,7 +22,7 @@ public class ServicioPagoImplementacion implements ServicioPago {
 
 	// Repositorios a ser utilizados
 	@Autowired
-	private PagoRepositorio pagoRepo; 		//Instancia del repositorio de pagos, para la utilizacion de metodos crud
+	private PagoRepositorio pagoRepo; 
 	
 	@Autowired
 	private RemuneracionRepositorio remuRepo;
@@ -38,6 +38,7 @@ public class ServicioPagoImplementacion implements ServicioPago {
 	// Retorna el pago creado
 	@Override
 	public Pago crearPago(Pago pago) {
+		// Verificar la existencia de usuario y organizacion
 		Optional<Usuario> usuarioOpt = usuarioRepo.findById(pago.getIdUsuario());
 		Optional<Organizacion> organizacionOpt = orgRepo.findById(pago.getIdOrganizacion());
 		
@@ -54,6 +55,7 @@ public class ServicioPagoImplementacion implements ServicioPago {
 		Usuario usuario = usuarioOpt.get();
 		Organizacion organizacion = organizacionOpt.get();
 		
+		// Verificar que el usuario que pague sea uno que puede (Angel Investor o Sponsor)
 		if (Objects.equals(usuario.getRol(), "AI") || Objects.equals(usuario.getRol(), "SP")) {
 			long idRemu = pago.getIdRemuneracion();
 			double montoRemu = remuRepo.getMontoTotal(idRemu);
@@ -94,13 +96,12 @@ public class ServicioPagoImplementacion implements ServicioPago {
 		}
 	}
 	
-	// Otras funciones de utilidad
-	
 	@Override
 	public void eliminarPago(long id) {
 		pagoRepo.deleteById(id);
 	}
 
+	// Actualiza la entrada de un pago en la base de datos utilizando los datos de pagoAct
 	@Override
 	public Pago actualizarPago(Pago pagoAct) {
 		Optional<Pago> pagoOpt = pagoRepo.findById(pagoAct.getId());
@@ -110,6 +111,7 @@ public class ServicioPagoImplementacion implements ServicioPago {
 		return null;
 	}
 
+	// Retorna una instancia de pago con la id pasada de la base de datos si existe
 	@Override
 	public Pago buscarPago(long id) {
 		Optional<Pago> pagoOpt = pagoRepo.findById(id);
