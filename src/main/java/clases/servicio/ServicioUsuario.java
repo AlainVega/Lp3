@@ -28,4 +28,5 @@ public interface ServicioUsuario {
 	public ArrayList<Usuario> listarPorRol(String rol);
 	public Usuario buscarUsuario(long id);
 	
+	public void enviarCorreoPorExpirar();
 }

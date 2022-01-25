@@ -1,5 +1,7 @@
 package clases.servicio;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -116,6 +118,18 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 			return usuarioOpt.get();
 		}
 		return null;
+	}
+	
+	@Override
+	public void enviarCorreoPorExpirar() {
+		Iterable<Usuario> usuarios = usuarioRepo.findAll();
+		for (Usuario usuario: usuarios) {
+			LocalDate finMembresia = usuario.getMembresiaFechaExpiracion();
+			long diff = ChronoUnit.DAYS.between(finMembresia, LocalDate.now());
+			if (diff <= 7) {
+				System.out.println(String.format("La membresia del usuario %d expira en %d dias.", usuario.getId(), diff));
+			}
+		}
 	}
 	
 }

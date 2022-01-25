@@ -26,7 +26,11 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 	
 	@Override
 	public Invitacion crearInv(Invitacion nuevaInv) {
-		return invRepo.save(nuevaInv);
+		if (usuarioRepo.existsById(nuevaInv.getIdDeUsuario()) && usuarioRepo.existsById(nuevaInv.getIdParaUsuario())) {
+			return invRepo.save(nuevaInv);
+		}
+		System.out.println("Ambos usuarios deben existir.");
+		return null;
 	}
 
 	@Override
