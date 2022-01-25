@@ -72,7 +72,7 @@ public class ControllerUsuario {
 	}
 	
 	@PutMapping(
-			value = "/actualizarUsuario/Administrador",
+			value = "/actualizarAdministrador",
 			consumes = {MediaType.APPLICATION_JSON_VALUE},
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Usuario actualizarUsuario(@RequestBody Administrador administrador) {
