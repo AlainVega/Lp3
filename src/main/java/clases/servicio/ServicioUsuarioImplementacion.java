@@ -125,7 +125,7 @@ public class ServicioUsuarioImplementacion implements ServicioUsuario {
 		Iterable<Usuario> usuarios = usuarioRepo.findAll();
 		for (Usuario usuario: usuarios) {
 			LocalDate finMembresia = usuario.getMembresiaFechaExpiracion();
-			long diff = ChronoUnit.DAYS.between(finMembresia, LocalDate.now());
+			long diff = ChronoUnit.DAYS.between(LocalDate.now(), finMembresia);
 			if (diff <= 7) {
 				System.out.println(String.format("La membresia del usuario %d expira en %d dias.", usuario.getId(), diff));
 			}
