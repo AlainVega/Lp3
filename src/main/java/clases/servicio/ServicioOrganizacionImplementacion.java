@@ -59,8 +59,14 @@ public class ServicioOrganizacionImplementacion implements ServicioOrganizacion 
 		else {												
 			Optional<Usuario> usuarioOpt = usuarioRepo.findById(idUsuario);
 			Usuario usuario = usuarioOpt.get();
-			if (Objects.equals(usuario.getRol(), "AI") && (org.listaUsuarios.size() < 2)) {		//Si el usuario es un Angel Investor, entonces la organizacion a la cual va a formar parte para financiar, debe tener al menos 2 miembros.
+			if (org.getListaUsuarios().contains(usuario.getId())) {
+				System.out.println("El usuario ya forma parte de esta organizacion.");
+			}
+			else if (Objects.equals(usuario.getRol(), "AI") && (org.listaUsuarios.size() < 2)) {		//Si el usuario es un Angel Investor, entonces la organizacion a la cual va a formar parte para financiar, debe tener al menos 2 miembros.
 				System.out.println("El Angel Investor solo puede agregarse a organizaciones que tengan 2 miembros o mas.");
+			}
+			else if (Objects.equals(usuario.getRol(), "AD")) {
+				System.out.println("Los administradores no pueden formar parte de una organizacion.");
 			}
 			else {
 				org.listaUsuarios.add(idUsuario);
