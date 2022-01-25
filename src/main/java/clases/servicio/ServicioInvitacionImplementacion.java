@@ -54,9 +54,10 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 		LocalDate todayDate = LocalDate.now();
 		Integer contador = 0;
 		for (Invitacion inv: invitaciones) {	//Recorremos todas las invitaciones existentes.
-			if ((todayDate.isBefore(inv.getFechaCreacion()) || todayDate.isAfter(inv.getFechaExpiracion()))) {		//Si la invitacion expiro, imprimimos un mensaje en consola.
+			if ((todayDate.isBefore(inv.getFechaCreacion()) || todayDate.isAfter(inv.getFechaExpiracion()))) {		
+				// Si la invitacion expiro, imprimimos un mensaje en consola.
 				System.out.println(String.format("La invitacion #%d expiro.", inv.getId()));
-				contador++;																							//contabilizamos la invitacuion expirada.
+				contador++;	// Contabilizamos la invitacion expirada.
 				inv.setExpirado(true);
 			}
 			else {
