@@ -47,7 +47,7 @@ public class ControllerOrg {
 		servicioOrganizacion.eliminarOrg(id);
 	}
 	
-	@GetMapping("/listarOrganizaciones/")
+	@GetMapping("/listarOrganizaciones")
 	public ArrayList<Organizacion> listarOrganizaciones(HttpServletResponse httpResponse) throws Exception {
 		httpResponse.sendRedirect("/organizaciones");
 		return null;
