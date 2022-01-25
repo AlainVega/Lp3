@@ -111,7 +111,7 @@ public class ControllerUsuario {
 		return servicioUsuario.actualizarSponsor(sponsor);
 	}
 	
-	@GetMapping("/listarUsuarios/")
+	@GetMapping("/listarUsuarios")
 	public ArrayList<Usuario> listarUsuarios(HttpServletResponse httpResponse) throws Exception {
 		httpResponse.sendRedirect("/usuarios");
 		return null;
