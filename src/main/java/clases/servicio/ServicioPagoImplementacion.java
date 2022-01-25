@@ -105,7 +105,7 @@ public class ServicioPagoImplementacion implements ServicioPago {
 	public Pago actualizarPago(Pago pagoAct) {
 		Optional<Pago> pagoOpt = pagoRepo.findById(pagoAct.getId());
 		if (pagoOpt.isPresent()) {
-			return pagoRepo.save(pagoOpt.get());
+			return pagoRepo.save(pagoAct);
 		}
 		return null;
 	}

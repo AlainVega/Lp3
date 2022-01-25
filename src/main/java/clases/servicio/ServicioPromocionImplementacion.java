@@ -33,7 +33,7 @@ public class ServicioPromocionImplementacion implements ServicioPromocion {
 	public Promocion actualizarPromocion(Promocion promoAct) {
 		Optional<Promocion> promoOpt = promoRepo.findById(promoAct.getId());
 		if (promoOpt.isPresent()) {
-			return promoRepo.save(promoOpt.get());
+			return promoRepo.save(promoAct);
 		}
 		return null;
 	}

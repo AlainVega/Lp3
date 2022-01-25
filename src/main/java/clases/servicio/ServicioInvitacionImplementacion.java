@@ -39,7 +39,7 @@ public class ServicioInvitacionImplementacion implements ServicioInvitacion {
 	public Invitacion actualizarInv(Invitacion invAct) {
 		Optional<Invitacion> invOpt = invRepo.findById(invAct.getId());
 		if (invOpt.isPresent()) {
-			return invRepo.save(invOpt.get());
+			return invRepo.save(invAct);
 		}
 		return null;
 	}

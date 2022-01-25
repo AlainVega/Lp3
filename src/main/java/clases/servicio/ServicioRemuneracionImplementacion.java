@@ -37,7 +37,7 @@ public class ServicioRemuneracionImplementacion implements ServicioRemuneracion 
 	public Remuneracion actualizarRemuneracion(Remuneracion remuAct) {
 		Optional<Remuneracion> remuOpt = remuRepo.findById(remuAct.getId());
 		if (remuOpt.isPresent()) {
-			return remuRepo.save(remuOpt.get());
+			return remuRepo.save(remuAct);
 		}
 		return null;
 	}
